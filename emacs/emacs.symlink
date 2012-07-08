@@ -67,6 +67,13 @@
 ;; enable textmate minor mode
 (textmate-mode)
 
+;; Keybindings for window resize.
+(global-set-key (kbd "<C-S-left>") 'shrink-window-horizontally)
+(global-set-key (kbd "<C-S-right>") 'enlarge-window-horizontally)
+
+;; Disable line highlighting.
+(remove-hook 'prog-mode-hook 'esk-turn-on-hl-line-mode)
+
 ;; use clojure-mode to edit ClojureScript files
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
 
@@ -115,6 +122,8 @@
 
 ;; do not scroll dramatically when moving one line at a time
 (setq-default scroll-conservatively 1)
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-scroll-amount '(2 ((shift) . 5)))
 
 ;; highlight 80+ for Python
 (add-hook 'python-mode-hook (lambda () (highlight-80+-mode)))
