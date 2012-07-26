@@ -33,6 +33,9 @@
 ;; start a single emacs server
 (server-start)
 
+;; make the right command key control
+(setq mac-right-command-modifier 'ctrl)
+
 (require 'color-theme)
 (require 'color-theme-solarized)
 (require 'color-theme-ir-black)
