@@ -35,6 +35,8 @@
 
 ;; make the right command key control
 (setq mac-right-command-modifier 'ctrl)
+;; use a small font size for MBP Retina
+(set-face-attribute 'default nil :height 100)
 
 (require 'color-theme)
 (require 'color-theme-solarized)
