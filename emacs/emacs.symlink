@@ -18,6 +18,7 @@
                       idle-highlight-mode magit org org-magit pyflakes
                       pylint python-mode python-pep8 ruby-mode yaml-mode
                       markdown-mode textmate find-things-fast coffee-mode
+                      highlight-indentation
                       color-theme-ir-black)
   "A list of packages to ensure are installed at launch.")
 
@@ -91,6 +92,9 @@
 
 ;; use clojure-mode to edit ClojureScript files
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
+
+;; indnetation highlighting
+(require 'highlight-indentation)
 
 ;; configure the file extensions used by markdown mode
 (setq auto-mode-alist
