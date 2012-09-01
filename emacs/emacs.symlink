@@ -96,6 +96,12 @@
 ;; indnetation highlighting
 (require 'highlight-indentation)
 
+;; set indentation in coffee mode
+(defun coffee-custom ()
+  (make-local-variable 'tab-width)
+  (set 'tab-width 2))
+(add-hook 'coffee-mode-hook 'coffee-custom)
+
 ;; configure the file extensions used by markdown mode
 (setq auto-mode-alist
   (cons '("\\.md" . markdown-mode) auto-mode-alist))
