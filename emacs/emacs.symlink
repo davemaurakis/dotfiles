@@ -93,7 +93,10 @@
 ;; use clojure-mode to edit ClojureScript files
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
 
-;; indnetation highlighting
+;; Set the default fill column width to 79.
+(setq-default fill-column 79)
+
+;; indentation highlighting
 (require 'highlight-indentation)
 
 ;; set indentation in coffee mode
