@@ -19,6 +19,10 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 export EDITOR='/usr/local/bin/emacsclient'
 
+# Activate z.
+. z
+
+# Customize the prompt.
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
