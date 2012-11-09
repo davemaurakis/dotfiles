@@ -22,6 +22,24 @@ export EDITOR="subl"
 # Activate z.
 . z
 
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
+
+alias ls='ls -F'
+alias ll='ls -aG'
+alias la='ll -l'
+
+export PATH=$PATH:/usr/local/bin/git:$HOME/bin
+
+# POLAR PATH
+export PATH=$PATH:$HOME/coding/polar/projects/MediaEverywhere-CLI/bin
+
+# NPM globals
+export PATH=$PATH:/usr/local/share/npm/bin
+
+
+
 # Customize the prompt.
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
