@@ -54,4 +54,5 @@ function parse_git_branch {
   echo "("${ref#refs/heads/}")"
 }
 
-PS1="\n$YELLOW[\u]$RED \w $GREEN\$(parse_git_branch)\n$BLUE$ $NON"
+# export PS1='\w\[\033[32m\]$(__git_ps1) \[\033[0m\]% '
+PS1="\n$YELLOW[\u]$RED \w $GREEN\$(parse_git_branch)\n$BLUE% $NON"
