@@ -1,0 +1,52 @@
+[user]
+  name = Dave Maurakis
+  email = davemaurakis@gmail.com
+[alias]
+  st = status
+  ci = commit
+  co = checkout
+  br = branch
+  ca = commit -av
+  cam = commit -am
+  cm = commit -m
+  mg = merge --no-ff
+  undo = reset --hard
+  st = status -sb
+  lo = log --graph
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  amend = commit --amend
+  wc = whatchanged --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  count = !git shortlog -sn
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
+[core]
+  editor = subl -w
+  excludesfile = ~/.gitignore
+[merge]
+  tool = diffmerge
+[branch]
+  autosetupmerge = true
+[help]
+  format = web
+[web]
+  browser = open
+[apply]
+  whitespace = strip
+[diff]
+  tool = diffmerge
+[mergetool "diffmerge"]
+  cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
+  trustExitCode = true
+[difftool "diffmerge"]
+  cmd = diffmerge $LOCAL $REMOTE
+[git-tmbundle]
+  gitnub-path = nub
+  gitx-path = /Applications/Gitx
+[pivotal]
+  full-name = Dave Maurakis
+  only-mine = true
