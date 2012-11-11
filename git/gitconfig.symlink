@@ -11,6 +11,7 @@
   cm = commit -m
   mg = merge --no-ff
   undo = reset --hard
+  us = reset HEAD
   st = status -sb
   lo = log --graph
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
