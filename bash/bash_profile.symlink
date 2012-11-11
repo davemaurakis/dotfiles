@@ -13,6 +13,9 @@ then
   source ~/.localrc
 fi
 
+# Load RVM into a shell session.
+[[ -s "/Users/davemaurakis/.rvm/scripts/rvm" ]] && source "/Users/davemaurakis/.rvm/scripts/rvm"
+
 export PATH="/usr/local/bin:/usr/local/sbin:$DOTFILES/bin:$PATH"
 
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
