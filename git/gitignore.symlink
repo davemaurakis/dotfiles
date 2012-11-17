@@ -8,3 +8,5 @@
 *.perspectivev3
 *.mode1v3
 *.tm_build_errors
+*.sublime-project
+*.sublime-workspace
