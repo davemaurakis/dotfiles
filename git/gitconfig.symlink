@@ -51,3 +51,5 @@
 [pivotal]
   full-name = Dave Maurakis
   only-mine = true
+[mergetool]
+	keepBackup = false

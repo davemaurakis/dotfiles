@@ -41,8 +41,6 @@ export PATH=$PATH:$HOME/coding/polar/projects/MediaEverywhere-CLI/bin
 # NPM globals
 export PATH=$PATH:/usr/local/share/npm/bin
 
-
-
 # Customize the prompt.
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
