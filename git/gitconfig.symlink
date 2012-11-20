@@ -9,6 +9,11 @@
   ca = commit -av
   cam = commit -am
   cm = commit -m
+  dif = diff
+  dic = diff --cached
+  aa = add --all
+  ff = merge --ff-only
+  pullff = pull --ff-only
   mg = merge --no-ff
   undo = reset --hard
   us = reset HEAD
