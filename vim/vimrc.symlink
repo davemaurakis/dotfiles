@@ -202,3 +202,4 @@ let g:ctrlp_map = '<leader>f'
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "context"
+map ✠ o<Esc>k
