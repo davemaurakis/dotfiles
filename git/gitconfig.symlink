@@ -34,7 +34,8 @@
   status = auto
   ui = auto
 [core]
-  editor = subl -w
+  # editor = subl -w
+  editor = vi
   excludesfile = ~/.gitignore
 [merge]
   tool = diffmerge
