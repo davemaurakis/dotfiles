@@ -69,7 +69,7 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # add bash-powerline
 function _update_ps1()
 {
-   export PS1="$(~/coding/git-repos/powerline-bash/powerline-bash.py $?)"
+   export PS1="$(~/powerline-bash.py $?)"
 }
 
 export PROMPT_COMMAND="_update_ps1"
