@@ -202,6 +202,7 @@ let g:ctrlp_map = '<leader>f'
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "context"
-map ✠ o<Esc>k
+map ✠ o<Esc>
+map ✦ O<Esc>j
 let g:Powerline_symbols = 'fancy'
 map <leader>w :FixWhitespace<CR>
