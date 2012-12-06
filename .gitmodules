@@ -49,3 +49,6 @@
 [submodule "vim/vim.symlink/bundle/trailing-whitespace.vim"]
 	path = vim/vim.symlink/bundle/trailing-whitespace.vim
 	url = https://github.com/bronson/vim-trailing-whitespace.git
+[submodule "vim/vim.symlink/bundle/autoclose.vim"]
+	path = vim/vim.symlink/bundle/autoclose.vim
+	url = https://github.com/Townk/vim-autoclose.git
