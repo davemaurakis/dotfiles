@@ -2,7 +2,8 @@
   name = Dave Maurakis
   email = davemaurakis@gmail.com
 [alias]
-  st = status
+  sta = status
+  st = status -s
   ci = commit
   co = checkout
   br = branch
@@ -17,7 +18,6 @@
   mg = merge --no-ff
   undo = reset --hard
   us = reset HEAD
-  st = status -sb
   sts = stash show
   stl = stash list
   stp = stash pop
