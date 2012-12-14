@@ -86,6 +86,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.jst set ft=html
   au BufNewFile,BufRead *.template set ft=html
   au BufNewFile,BufRead *.recipe set ft=coffee
+  au BufNewFile,BufRead *.mustache set ft=html
 
   " Treat JSON files like JavaScript
   au BufNewFile,BufRead *.json set ft=javascript
@@ -107,7 +108,7 @@ set scrolloff=3
 let mapleader=";"
 
 " clear the search buffer when hitting ;return
-map <silent> <leader><cr> :noh<cr>
+map <silent> <leader><space> :noh<cr>
 
 " double percentage sign in command mode is expanded
 " to directory of current file - http://vimcasts.org/e/14
