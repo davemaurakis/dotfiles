@@ -3,8 +3,11 @@ syntax enable
 set encoding=utf-8
 
 filetype off
-runtime bundle/pathogen.vim/autoload/pathogen.vim
-call pathogen#infect()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" load all plugins
+source $HOME/.vim/packages.vim
 filetype plugin indent on
 
 call togglebg#map("<F5>")
@@ -107,7 +110,7 @@ set scrolloff=3
 "" Mappings
 let mapleader=";"
 
-" clear the search buffer when hitting ;return
+" clear the search buffer when hitting ;space
 map <silent> <leader><space> :noh<cr>
 
 " double percentage sign in command mode is expanded
@@ -206,5 +209,9 @@ let g:ctrlp_working_path_mode = 'rw'
 let g:SuperTabDefaultCompletionType = "context"
 map ✠ o<Esc>
 map ✦ O<Esc>j
-let g:Powerline_symbols = 'fancy'
 map <leader>w :FixWhitespace<CR>
+set cmdheight=1
+let g:Powerline_symbols = 'fancy'
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_auto_loc_list=1
