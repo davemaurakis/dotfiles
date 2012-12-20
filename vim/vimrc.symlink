@@ -110,16 +110,16 @@ set scrolloff=3
 "" Mappings
 let mapleader=";"
 
-" clear the search buffer when hitting ;space
-map <silent> <leader><space> :noh<cr>
-
 " double percentage sign in command mode is expanded
 " to directory of current file - http://vimcasts.org/e/14
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
-" Map space to / (search) and c-space to ? (backgwards search)
+" Map space to / (search) and shift-space to ? (backgwards search)
 map <space> /
-map <c-space> ?
+map ✧ ?
+
+" clear the search buffer when hitting ;space
+map <silent> <leader><space> :noh<cr>
 
 " Quickfix open
 nnoremap <leader>qo :copen<CR>
@@ -215,6 +215,7 @@ map ✦ O<Esc>j
 map <leader>w :FixWhitespace<CR>
 set cmdheight=1
 let g:Powerline_symbols = 'fancy'
+" Syntastic
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_auto_loc_list=1
