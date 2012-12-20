@@ -194,6 +194,9 @@ command W :w
 command Vs :vs
 command Wq :wq
 
+"autoclose
+nmap <unique> <Leader>ac <Plug>ToggleAutoCloseMappings
+
 " CtrlP
 let g:ctrlp_extensions = ['tag']
 let g:ctrlp_match_window_bottom = 1
