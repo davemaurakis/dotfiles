@@ -114,7 +114,7 @@ let mapleader=";"
 " to directory of current file - http://vimcasts.org/e/14
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
-" Map space to / (search) and shift-space to ? (backgwards search)
+" Map space to / (search) and control-space to ? (backgwards search)
 map <space> /
 map ✧ ?
 
