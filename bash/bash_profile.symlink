@@ -29,13 +29,32 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
+# ALIASES
+# general
 alias ls='ls -F'
 alias ll='ls -aG'
 alias la='ll -l'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias mkdir='mkdir -pv'
+alias j='jobs -l'
 
+# vim
+alias viminstall='vim +BundleInstall +qall'
+
+# work
+alias mebuild='me build --watch --debug --serve'
+alias melive='me build --watch --debug --serve --live'
+
+# misc
+alias wget='wget -c' # make wget resume downloads by defauls
+
+# PATHS
 export PATH=$PATH:/usr/local/bin/git:$HOME/bin
 
-# POLAR PATH
+# POLAR
 export PATH=$PATH:$HOME/coding/polar/projects/MediaEverywhere-CLI/bin
 
 # NPM globals
@@ -58,13 +77,8 @@ function parse_git_branch {
 # export PS1='\w\[\033[32m\]$(__git_ps1) \[\033[0m\]% '
 PS1="\n$YELLOW[\u]$RED \w $GREEN\$(parse_git_branch)\n$BLUE% $NON"
 
-##
-# Your previous /Users/dave.maurakis/.bash_profile file was backed up as /Users/dave.maurakis/.bash_profile.macports-saved_2012-12-03_at_10:02:18
-##
-
-# MacPorts Installer addition on 2012-12-03_at_10:02:18: adding an appropriate PATH variable for use with MacPorts.
+# MacPorts put this here...
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
 
 # add bash-powerline
 function _update_ps1()
