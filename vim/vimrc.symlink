@@ -189,7 +189,7 @@ map <leader>c :CoffeeCompile<CR>
 
 function SaveSession()
   :echo 'saving session'
-  :mksession! ~/previous_session.ses
+  :mksession! ~/.previous_session.ses
 endfunction
 
 " c:number to jump coffee/js

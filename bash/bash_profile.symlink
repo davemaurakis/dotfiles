@@ -51,7 +51,7 @@ alias j='jobs -l'
 
 # vim
 alias viminstall='vim +BundleInstall +qall'
-alias vimrestore='vim -S ~/previous_session.ses'
+alias vimrestore='vim -S ~/.previous_session.ses'
 
 # work
 alias mebuild='me build --watch --debug --serve'
