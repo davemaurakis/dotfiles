@@ -90,6 +90,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.template set ft=html
   au BufNewFile,BufRead *.recipe set ft=coffee
   au BufNewFile,BufRead *.mustache set ft=html
+  au BufNewFile,BufRead *.scss set ft=scss.css
 
   " Treat JSON files like JavaScript
   au BufNewFile,BufRead *.json set ft=javascript
