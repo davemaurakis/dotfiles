@@ -190,7 +190,6 @@ map <leader>c :CoffeeCompile<CR>
 function SaveSession()
   :echo 'saving session'
   :mksession! ~/previous_session.ses
-  :qall
 endfunction
 
 " c:number to jump coffee/js
@@ -198,7 +197,9 @@ command -nargs=1 C CoffeeCompile | :<args>
 command W :w
 command Vs :vs
 command Wq :wq
-command SQ :call SaveSession()
+command SS :call SaveSession()
+command SQ :call SaveSession() | :qall
+
 
 "autoclose
 nmap <unique> <Leader>ac <Plug>ToggleAutoCloseMappings
