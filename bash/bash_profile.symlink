@@ -25,7 +25,7 @@ export EDITOR="subl"
 # add bash-powerline
 function _update_ps1()
 {
-   export PS1="$(~/powerline-bash.py $?)"
+   export PS1="$(~/.powerline-bash.py $?)"
 }
 
 export PROMPT_COMMAND="_update_ps1"
