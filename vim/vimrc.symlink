@@ -84,6 +84,7 @@ if has("autocmd")
   " Make sure all markdown files have the correct filetype set and setup wrapping
   au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
 
+  au FileType conf set ft=sh
   au BufRead,BufNewFile coffee setf coffee
   au BufRead,BufNewFile Jakefile setf javascript
   au BufNewFile,BufRead *.jst set ft=html
