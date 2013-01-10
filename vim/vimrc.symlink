@@ -123,6 +123,9 @@ map ✧ ?
 " clear the search buffer when hitting ;space
 map <silent> <leader><space> :noh<cr>
 
+" disable EX mode
+map Q <Nop>
+
 " Quickfix open
 nnoremap <leader>qo :copen<CR>
 
