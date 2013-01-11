@@ -12,6 +12,9 @@ filetype plugin indent on
 
 call togglebg#map("<F5>")
 
+"shell
+set shell=/bin/bash
+
 " Some view/ux related stuff
 set background=dark
 let g:indent_guides_auto_colors = 0
@@ -90,7 +93,6 @@ if has("autocmd")
   au BufNewFile,BufRead *.jst set ft=html
   au BufNewFile,BufRead *.template set ft=html
   au BufNewFile,BufRead *.recipe set ft=coffee
-  au BufNewFile,BufRead *.mustache set ft=html
   au BufNewFile,BufRead *.scss set ft=scss.css
 
   " Treat JSON files like JavaScript
@@ -227,7 +229,11 @@ map ✦ O<Esc>j
 map <leader>w :FixWhitespace<CR>
 set cmdheight=1
 let g:Powerline_symbols = 'fancy'
+
 " Syntastic
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_auto_loc_list=1
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': [],
+                           \ 'passive_filetypes': ['scss', 'mustache'] }
