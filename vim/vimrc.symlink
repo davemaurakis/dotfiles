@@ -237,3 +237,18 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': [],
                            \ 'passive_filetypes': ['scss', 'mustache'] }
+
+map <leader>j :call ToggleJournal()<CR>
+
+" Toggle Taskpaper Journal
+let g:journal_toggle=0
+
+function ToggleJournal()
+  if g:journal_toggle
+      :bd TODO.taskpaper
+      let g:journal_toggle=0
+  else
+      :split ~/Dropbox/appdata/TODO.taskpaper
+      let g:journal_toggle=1
+  endif
+endfunction
