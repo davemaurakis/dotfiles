@@ -80,6 +80,13 @@ call s:highlight("VertSplit", 8, "NONE", "NONE")
 call s:highlight("StatusLine", 7, 13, "NONE")
 call s:highlight("StatusLineNC", 8, 13, "NONE")
 
+" Add support for ShowMarks
+call s:highlight("ShowMarksHLl", 7, 13, "NONE")
+call s:highlight("ShowMarksHLu", 7, 13, "NONE")
+call s:highlight("ShowMarksHLo", 7, 13, "NONE")
+call s:highlight("ShowMarksHLm", 7, 13, "NONE")
+call s:highlight("SignColumn", 7, 13, "NONE")
+
 call s:highlight("Folded", 8, "NONE", "NONE")
 call s:highlight("Title", "NONE", "NONE", "NONE")
 call s:highlight("Visual", 7, 8, "NONE")
