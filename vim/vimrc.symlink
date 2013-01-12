@@ -205,7 +205,7 @@ command W :w
 command Vs :vs
 command Wq :wq
 command SS :call SaveSession()
-command SQ :call SaveSession() | :qall
+command SQ :call SaveSession() | :wqall
 
 
 "autoclose
