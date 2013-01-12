@@ -248,7 +248,7 @@ function ToggleJournal()
       :bd TODO.taskpaper
       let g:journal_toggle=0
   else
-      :split ~/Dropbox/appdata/TODO.taskpaper
+      :split ~/Dropbox/appdata/todo/TODO.taskpaper
       let g:journal_toggle=1
   endif
 endfunction
