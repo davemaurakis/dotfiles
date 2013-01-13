@@ -2,6 +2,8 @@
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'skwp/vim-colors-solarized'
 Bundle 'Lucius'
+" Bundle "altercation/vim-colors-solarized"
+Bundle 'Solarized'
 
 Bundle 'ack.vim'
 Bundle 'cocoa.vim'
