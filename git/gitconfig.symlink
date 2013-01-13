@@ -62,3 +62,5 @@
   only-mine = true
 [mergetool]
 	keepBackup = false
+[push]
+	default = simple
