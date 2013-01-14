@@ -1,14 +1,15 @@
-mjrusso's dotfiles
+brownbathrobes's dotfiles
 ==================
 
-My personalized system configuration. ([Inspiration](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/))
+My system configuration. ([Inspiration](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/))
 
 installation
 ------------
 
-    git clone git://github.com/mjrusso/dotfiles ~/.dotfiles
+    git clone git://github.com/brownbathrobe/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles
     rake install
+    vim +BundleInstall +qall
 
 notes
 -----
@@ -37,7 +38,10 @@ thanks
 
 These dotfiles are heavily based on [Zach Holman's dotfiles](https://github.com/holman/dotfiles).
 
-Also includes code from the following dotfiles:
-
+Includes code from the following dotfiles:
+- [Michael J. Russo](http://github.com/mjrusso/dotfiles)
+- [Daniel Russo](https://github.com/drusso/dotfiles)
+- [Shane Jonas](https://github.com/shanejonas/dotfiles)
+- [Nino D'Aversa](https://github.com/ndaversa/vim)
 - [Mathias Bynens](https://github.com/mathiasbynens/dotfiles)
 - [Andrew Sardone](https://github.com/andrewsardone/dotfiles)
