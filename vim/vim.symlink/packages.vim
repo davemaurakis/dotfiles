@@ -2,7 +2,6 @@
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'skwp/vim-colors-solarized'
 Bundle 'Lucius'
-" Bundle "altercation/vim-colors-solarized"
 Bundle 'Solarized'
 
 Bundle 'ack.vim'
@@ -35,3 +34,4 @@ Bundle 'juvenn/mustache.vim'
 Bundle 'hallison/vim-markdown'
 Bundle 'taskpaper.vim'
 Bundle 'zakj/vim-showmarks'
+Bundle 'tristen/vim-sparkup'
