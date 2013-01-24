@@ -6,3 +6,5 @@ map <c-d> scrollPageDown
 map <c-u> scrollPageUp
 map <c-h> previousTab
 map <c-l> nextTab
+map ;f Vomnibar.activateInNewTab
+map :b Vomnibar.activateTabSelection
