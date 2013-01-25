@@ -1,10 +1,12 @@
 unmap d
 unmap u
+unmap t
 unmap K
 unmap J
 map <c-d> scrollPageDown
 map <c-u> scrollPageUp
 map <c-h> previousTab
 map <c-l> nextTab
+map T createTab
 map ;f Vomnibar.activateInNewTab
 map :b Vomnibar.activateTabSelection
