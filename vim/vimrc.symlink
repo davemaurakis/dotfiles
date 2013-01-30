@@ -267,7 +267,8 @@ map ,hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
 " Override color of @ variables in CoffeeScript files
 hi! link coffeeSpecialVar Function
 " Override incremental search color
-hi! link Search Pl7587d7ff1f0087afN
+" hi! link Search Pl7587d7ff1f0087afN
+hi! link Search DiffAdd
 " hi! link Search Folded
 " hi! link Search TabLineFill
 
