@@ -302,3 +302,9 @@ inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
     return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction"
+
+nnoremap <leader>dmc :<c-u>call MultiCursorSearch('<c-r><c-w>')<cr>
+nnoremap <leader>dc :<c-u>call MultiCursorPlaceCursor()<cr>
+nnoremap <leader>uc :<c-u>call MultiCursorManual()<cr>
+nnoremap <leader>rc :<c-u>call MultiCursorRemoveCursors()<cr>
+let g:multicursor_quit = "Q"
