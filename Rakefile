@@ -30,7 +30,7 @@ require 'rake'
 require 'fileutils'
 
 desc "Hook our dotfiles into system-standard positions."
-task :install => [:generate_gitconfig_from_template] do
+task :install => [:generate_gitconfig_from_template, :generate_bash_profile_from_template] do
   linkables = Dir.glob('*/**{.symlink}').map! do |linkable|
     file = linkable.split('/').last.split('.symlink').last
     { "path" => linkable,
@@ -79,6 +79,34 @@ task :install => [:generate_gitconfig_from_template] do
 
   `source "$HOME/.bash_profile"`
 
+end
+
+desc "Generate a local bash_profile"
+task :generate_bash_profile_from_template do
+  bash_profile_name = "#{ENV['HOME']}/.bash_profile"
+  exists = false
+  skip = false
+  regenerate = false
+
+  if File.exists?(bash_profile_name)
+    exists = true
+    puts "a local bash_profile file already exists, what do you want to do? [s]kip, [r]egenerate"
+    case STDIN.gets.chomp
+    when 's' then skip = true
+    when 'r' then regenerate = true
+    end
+  end
+
+  if not exists or regenerate
+    repl = {}
+    puts "\nGenerating local bash_profile"
+    print("Polar path: "); STDOUT.flush; repl['__POLAR_PATH__'] = STDIN.gets.chomp
+    temp = IO.read('bash/bash_profile.template')
+    repl.each { |k,v| temp.gsub!(k,v) }
+    File.new(bash_profile_name, File::WRONLY|File::TRUNC|File::CREAT).puts temp
+  else
+    puts "\nSkipping generation of local bash_profile"
+  end
 end
 
 desc "Generate a gitconfig file from the template based on user input"
