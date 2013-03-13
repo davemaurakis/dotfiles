@@ -28,3 +28,6 @@ sass=.sass,.scss
 --type-set
 coffee=.coffee
 
+# add specific type for mustache
+--type-set
+mustache=.mustache
