@@ -67,6 +67,7 @@ alias vimrestore='vim -S ~/.previous_session.ses'
 # work
 alias mebuild='me build --watch --debug --serve'
 alias melive='me build --watch --debug --serve --live'
+alias meclean='me clean'
 
 # misc
 alias grep='grep --color=auto'
