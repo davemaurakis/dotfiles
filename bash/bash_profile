@@ -21,7 +21,7 @@ fi
 # add bash-powerline
 function _update_ps1()
 {
-  export PS1="$(~/.powerline-bash.py $?)"
+  export PS1="$(~/.powerline-shell.py $?)"
 }
 
 # PATHS
@@ -72,3 +72,4 @@ alias meclean='me clean'
 # misc
 alias grep='grep --color=auto'
 alias wget='wget -c' # make wget resume downloads by defauls
+alias adbforward='adb forward tcp:9222 localabstract:chrome_devtools_remote'
