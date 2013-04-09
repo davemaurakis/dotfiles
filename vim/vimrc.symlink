@@ -212,8 +212,10 @@ command SS :call SaveSession()
 command SQ :call SaveSession() | :wqall
 
 
-"autoclose
+" autoclose
 nmap <unique> <Leader>ac <Plug>ToggleAutoCloseMappings
+" turn off autoclose by default
+let g:autoclose_on = 0
 
 " CtrlP
 let g:ctrlp_extensions = ['tag']
