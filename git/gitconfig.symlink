@@ -10,6 +10,7 @@
   ca = commit -av
   cam = commit -am
   cm = commit -m
+  cv = commit -av
   dif = diff
   dic = diff --cached
   aa = add --all
