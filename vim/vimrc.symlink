@@ -312,3 +312,6 @@ nnoremap <leader>dc :<c-u>call MultiCursorPlaceCursor()<cr>
 nnoremap <leader>uc :<c-u>call MultiCursorManual()<cr>
 nnoremap <leader>rc :<c-u>call MultiCursorRemoveCursors()<cr>
 let g:multicursor_quit = "Q"
+
+" mapping to open current md file with Marked
+nnoremap <leader>md :!open -a "Marked.app" "%:p"<CR>
