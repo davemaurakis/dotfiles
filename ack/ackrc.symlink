@@ -22,7 +22,7 @@ haml=.haml
 
 # add specific type for sass
 --type-set
-sass=.sass,.scss
+sass=.styl,.sass,.scss
 
 # add specific type for coffee
 --type-set
