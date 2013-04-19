@@ -152,6 +152,10 @@ noremap <Leader>P "0P
 " goto previous buffer, then delete previous buffer (close buffer, keep split)
 nmap <leader>d :b#<bar>bd#<CR>
 
+" SPLITS
+" make splitting more sane
+set splitbelow
+set splitright
 " easier navigation between split windows
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -159,6 +163,7 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 " equalize window split
 nnoremap <c-\> <c-w>=
+nnoremap <c-]> <c-w><bar>
 
 " resize windows quickly using arrow keys
 nnoremap <Right> :vertical resize +3<cr>
@@ -289,6 +294,8 @@ augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+
+"NEOCOMPLCACHE
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_auto_select = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -307,6 +314,7 @@ function! s:my_cr_function()
     return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction"
 
+" MULTICURSOR
 nnoremap <leader>dmc :<c-u>call MultiCursorSearch('<c-r><c-w>')<cr>
 nnoremap <leader>dc :<c-u>call MultiCursorPlaceCursor()<cr>
 nnoremap <leader>uc :<c-u>call MultiCursorManual()<cr>
