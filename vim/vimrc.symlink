@@ -376,3 +376,6 @@ function! RunTests(filename)
         exec ":!node_modules/.bin/mocha " . a:filename
     end
 endfunction
+
+" open .vimrc
+nmap <leader>v :tabnew ~/.vimrc <cr>
