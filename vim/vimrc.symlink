@@ -376,6 +376,12 @@ function! RunTests(filename)
         exec ":!node_modules/.bin/mocha " . a:filename
     end
 endfunction
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" OPEN FILES IN DIRECTORY OF CURRENT FILE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
 
 " open .vimrc
 nmap <leader>v :tabnew ~/.vimrc <cr>
