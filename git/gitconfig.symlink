@@ -1,6 +1,4 @@
 [user]
-  name = dave-maurakis
-  email = dave.maurakis@polarmobile.com
 [alias]
   sta = status
   st = status -s
@@ -25,7 +23,6 @@
   lo = log --graph
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  amend = commit --amend
   wc = whatchanged --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   count = !git shortlog -sn
 [color]

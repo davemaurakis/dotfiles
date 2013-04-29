@@ -1,6 +1,11 @@
+# set up git environment variables
+export GIT_AUTHOR_NAME="__GIT_AUTHOR_NAME__"
+export GIT_AUTHOR_EMAIL="__GIT_AUTHOR_EMAIL__"
+export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+
 # set up local paths
 export POLARPATH=__POLAR_PATH__
 
 # load shared profile
 source ~/.dotfiles/bash/bash_profile
-
