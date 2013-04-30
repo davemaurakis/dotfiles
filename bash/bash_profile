@@ -60,6 +60,11 @@ alias .....='cd ../../../..'
 alias mkdir='mkdir -pv'
 alias j='jobs -l'
 
+# npm
+alias npmrm='rm -rfv node_modules'
+alias npmclr='npm cache clear'
+alias npminst='npm install'
+
 # vim
 alias viminstall='vim +BundleInstall +qall'
 alias vimrestore='vim -S ~/.previous_session.ses'
