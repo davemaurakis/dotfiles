@@ -59,15 +59,11 @@ task :install => [:generate_gitconfig_from_template, :generate_bash_profile_from
     file = linkable['file']
     target = linkable['target']
 
-    if skip_all
-      break
-    end
-
     if File.exists?(target) || File.symlink?(target)
       unless skip_all || overwrite_all || backup_all
         puts " "
         puts "File already exists: #{target}"
-        puts "What do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all"
+        puts "What do you want to do? [s]kip, [S]kip all existing, [o]verwrite, [O]verwrite all existing, [b]ackup, [B]ackup all existing"
         case STDIN.gets.chomp
         when 'o' then overwrite = true
         when 'b' then backup = true
@@ -77,14 +73,12 @@ task :install => [:generate_gitconfig_from_template, :generate_bash_profile_from
         when 's' then next
         end
       end
+      next if skip_all
       FileUtils.rm_rf(target) if overwrite || overwrite_all
       `mv "#{target}" "#{target}.backup"` if backup || backup_all
     end
-
-    unless skip_all
-      `ln -s "$PWD/#{path}" "#{target}"`
-    end
-
+    puts "\nLinked: #{Dir.pwd()}/#{path} => #{target}"
+    `ln -s "$PWD/#{path}" "#{target}"`
   end
 
   `source "$HOME/.bash_profile"`
@@ -100,7 +94,8 @@ task :generate_bash_profile_from_template do
 
   if File.exists?(bash_profile_name)
     exists = true
-    puts "a local bash_profile file already exists, what do you want to do? [s]kip, [r]egenerate"
+    puts "\nA local .bash_profile file already exists"
+    puts "What do you want to do? [s]kip, [r]egenerate"
     case STDIN.gets.chomp
     when 's' then skip = true
     when 'r' then regenerate = true
@@ -116,8 +111,6 @@ task :generate_bash_profile_from_template do
     temp = IO.read('bash/bash_profile.template')
     repl.each { |k,v| temp.gsub!(k,v) }
     File.new(bash_profile_name, File::WRONLY|File::TRUNC|File::CREAT).puts temp
-  else
-    puts "\nSkipping generation of local bash_profile"
   end
 end
 
@@ -130,7 +123,8 @@ task :generate_gitconfig_from_template do
 
   if File.exists?(gitconfig_name)
     exists = true
-    puts "gitconfig file already exists, what do you want to do? [s]kip, [r]egenerate"
+    puts "\nA local .gitconfig file already exists"
+    puts "What do you want to do? [s]kip, [r]egenerate"
     case STDIN.gets.chomp
     when 's' then skip = true
     when 'r' then regenerate = true
@@ -145,8 +139,6 @@ task :generate_gitconfig_from_template do
     temp = IO.read('git/gitconfig.template')
     repl.each { |k,v| temp.gsub!(k,v) }
     File.new(gitconfig_name, File::WRONLY|File::TRUNC|File::CREAT).puts temp
-  else
-    puts "\nSkipping generation of gitconfig"
   end
 end
 
