@@ -106,8 +106,6 @@ task :generate_bash_profile_from_template do
     repl = {}
     puts "\nGenerating local bash_profile"
     print("Polar path: "); STDOUT.flush; repl['__POLAR_PATH__'] = STDIN.gets.chomp
-    print("git author name: "); STDOUT.flush; repl['__GIT_AUTHOR_NAME__'] = STDIN.gets.chomp
-    print("git author email: "); STDOUT.flush; repl['__GIT_AUTHOR_EMAIL__'] = STDIN.gets.chomp
     temp = IO.read('bash/bash_profile.template')
     repl.each { |k,v| temp.gsub!(k,v) }
     File.new(bash_profile_name, File::WRONLY|File::TRUNC|File::CREAT).puts temp
