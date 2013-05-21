@@ -39,6 +39,7 @@ export PATH=$PATH:$POLARPATH/MediaEverywhere-CLI/bin
 # NPM globals
 export PATH=$PATH:/usr/local/share/npm/bin
 
+export PATH=$PATH:$ADBPATH
 # MacPorts
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
