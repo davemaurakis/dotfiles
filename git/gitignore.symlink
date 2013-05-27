@@ -9,6 +9,7 @@
 *.mode1v3
 *.tm_build_errors
 
+*.local
 *.sublime-project
 *.sublime-workspace
 *.todo
