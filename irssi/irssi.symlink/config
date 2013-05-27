@@ -1,30 +1,8 @@
+# vim: ft=config
 servers = (
-  { address = "eu.irc6.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "open.ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; },
-  { 
-    address = "irc.undernet.org";
-    chatnet = "Undernet";
-    port = "6667";
-  },
-  { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
-  { 
-    address = "irc.quakenet.org";
-    chatnet = "QuakeNet";
-    port = "6667";
-  },
-  { address = "irc.oftc.net"; chatnet = "OFTC"; port = "6667"; },
   {
-    address = "irc.gamesurge.net";
-    chatnet = "GameSurge";
-    port = "6667";
-  },
-  { address = "irc.webchat.org"; chatnet = "WebChat"; port = "6667"; },
-  { address = "irc.rizon.net"; chatnet = "Rizon"; port = "6667"; },
-  { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
-  { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
-  {
-    address = "chat.freenode.net";
+    address = "irc.freenode.net";
+    chatnet = "freenode";
     port = "6667";
     use_ssl = "no";
     ssl_verify = "no";
@@ -32,75 +10,16 @@ servers = (
   }
 );
 
-chatnets = {
-  IRCnet = {
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "5";
-    max_whois = "4";
-    max_query_chans = "5";
-  };
-  EFNet = { 
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "3";
-    max_whois = "1";
-  };
-  Undernet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  DALnet = {
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  QuakeNet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  OFTC = { 
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  GameSurge = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  WebChat = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  Rizon = { 
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  LinkNet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  SILC = { type = "SILC"; };
-};
+chatnets = { freenode = { type = "IRC"; nick = "brownbathrobe"; }; };
 
 channels = (
-  { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
-  { name = "silc"; chatnet = "silc"; autojoin = "No"; },
-  { name = "#documentcloud"; chatnet = "irctc"; autojoin = "yes"; }
+  { name = "#documentcloud"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#angularjs"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#bower"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#node.js"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#javascript"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#grunt"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#html5"; chatnet = "freenode"; autojoin = "Yes"; }
 );
 
 aliases = {
@@ -267,7 +186,7 @@ settings = {
   core = {
     real_name = "Dave Maurakis";
     user_name = "davemaurakis";
-    nick = "davemaurakis";
+    nick = "brownbathrobe";
   };
   "fe-text" = { actlist_sort = "refnum"; term_force_colors = "yes"; };
   "fe-common/core" = {
@@ -277,9 +196,15 @@ settings = {
     use_msgs_window = "yes";
     autoclose_windows = "no";
     reuse_unused_windows = "yes";
+    autocreate_windows = "yes";
+    print_active_channel = "yes";
   };
   "perl/core/scripts" = {
     uberprompt_load_hook = "/^vm_add";
     uberprompt_unload_hook = "/^vm_del";
   };
 };
+windows = {
+  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+};
+mainwindows = { 1 = { first_line = "1"; lines = "42"; }; };
