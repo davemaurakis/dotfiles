@@ -204,7 +204,6 @@ settings = {
     uberprompt_unload_hook = "/^vm_del";
   };
 };
-windows = {
-  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
-};
+windows = { 1 = { immortal = "yes"; name = "(status)"; level = "ALL"; }; };
 mainwindows = { 1 = { first_line = "1"; lines = "42"; }; };
+hilights = ( { text = "nick"; nick = "yes"; word = "yes"; } );

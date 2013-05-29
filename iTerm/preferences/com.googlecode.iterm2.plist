@@ -9702,8 +9702,10 @@
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
+	<key>NSWindow Frame NSColorPanel</key>
+	<string>308 307 201 309 0 0 1440 878 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>276 317 924 485 0 0 1440 900 </string>
+	<string>276 300 924 485 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1440 900 0 0 1440 878 </string>
 	<key>New Bookmarks</key>
@@ -9864,11 +9866,11 @@
 			<key>Background Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.15170273184776306</real>
+				<real>0.20397341251373291</real>
 				<key>Green Component</key>
-				<real>0.11783610284328461</real>
+				<real>0.20132023096084595</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.17569428682327271</real>
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
@@ -11293,7 +11295,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-04-05T14:19:48Z</date>
+	<date>2013-05-29T19:13:32Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
