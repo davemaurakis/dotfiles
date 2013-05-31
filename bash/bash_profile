@@ -77,6 +77,6 @@ alias meclean='me clean'
 
 # misc
 alias type='gtypist -b -i'
-alias grep='grep --color=auto'
+alias grep='grep --color=auto -C 3'
 alias wget='wget -c' # make wget resume downloads by defauls
 alias adbforward='adb forward tcp:9222 localabstract:chrome_devtools_remote'
