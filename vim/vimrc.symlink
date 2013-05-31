@@ -202,6 +202,8 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 "coffee compile
 vmap <leader>c <esc>:'<,'>:CoffeeCompile<CR>
 map <leader>c :CoffeeCompile<CR>
+"js2coffee
+map <leader>js :! Js2Coffee<CR>
 
 function SaveSession()
   :echo 'saving session'
@@ -251,7 +253,6 @@ let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'passive_filetypes': ['scss', 'mustache'] }
 
 map <leader>j :call ToggleJournal()<CR>
-
 " Toggle Taskpaper Journal
 let g:journal_toggle=0
 
