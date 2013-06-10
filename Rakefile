@@ -39,6 +39,9 @@ task :install => [:generate_gitconfig_from_template, :generate_bash_profile_from
     }
   end
 
+  # install oh-my-zsh
+  `curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh`
+
   # Custom include for fish shell. The fish shell requires config
   # files to be in the location of ~/.config/fish/config.fish.
   FileUtils.mkdir_p "#{ENV['HOME']}/.config/fish"
