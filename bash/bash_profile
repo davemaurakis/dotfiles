@@ -46,6 +46,9 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Activate z
 . z
 
+# set VI mode
+set -o vi
+
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
