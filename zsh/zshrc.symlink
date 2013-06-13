@@ -15,12 +15,12 @@ setopt HIST_IGNORE_SPACE
 setopt NO_HIST_BEEP
 setopt SHARE_HISTORY
 
+# powerline stuff
 POWERLINE_HIDE_HOST_NAME="true"
 POWERLINE_HIDE_USER_NAME="true"
 POWERLINE_RIGHT_A="date"
 POWERLINE_NO_BLANK_LINE="true"
-# POWERLINE_DISABLE_RPROMPT="true"
-# POWERLINE_FULL_CURRENT_PATH="true"
+POWERLINE_DISABLE_RPROMPT="true"
 
 #search backwards and forwards with a pattern
 bindkey -M vicmd '/' history-incremental-pattern-search-backward
@@ -31,23 +31,43 @@ bindkey -M viins '^R' history-incremental-pattern-search-backward
 bindkey -M viins '^F' history-incremental-pattern-search-forward
 bindkey "^?" backward-delete-char
 bindkey "^H" backward-delete-char
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew npm osx git vi-mode)
+plugins=(brew npm osx git vi-mode zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
+# colors
+export TERM=screen-256color
+export TERM="xterm-256color"
+
+# tmux colors
+alias tmux="TERM=xterm-256color tmux"
+
 export DOTFILES=$HOME/.dotfiles
-# Customize to your needs...
+
+# Customize your paths
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
 export PATH=~/bin:$PATH
 export PATH=/opt/local/bin:$PATH
 export PATH=/usr/local/Cellar/ruby/1.9.3-p327/bin:$PATH
 export PATH=/usr/local/Cellar:$PATH
 export PATH=/usr/local/bin:/usr/local/sbin:$DOTFILES/bin:$PATH
-export TERM=screen-256color
 
-#tmux colors
-alias tmux="TERM=xterm-256color tmux"
+export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
+
+export PATH=$PATH:/usr/local/bin/git:$HOME/bin
+
+# POLAR
+export POLARPATH=$HOME/coding/polar/projects
+export PATH=$PATH:$POLARPATH/MediaEverywhere-CLI/bin
+
+# NPM globals
+export PATH=$PATH:/usr/local/share/npm/bin
+
+export PATH=$PATH:$ADBPATH
+# MacPorts
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # Activate z
 . z
