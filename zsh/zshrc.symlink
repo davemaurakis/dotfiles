@@ -45,15 +45,13 @@ export TERM="xterm-256color"
 # tmux colors
 alias tmux="TERM=xterm-256color tmux"
 
-export DOTFILES=$HOME/.dotfiles
-
 # Customize your paths
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
 export PATH=~/bin:$PATH
 export PATH=/opt/local/bin:$PATH
 export PATH=/usr/local/Cellar/ruby/1.9.3-p327/bin:$PATH
 export PATH=/usr/local/Cellar:$PATH
-export PATH=/usr/local/bin:/usr/local/sbin:$DOTFILES/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.dotfiles/bin:$PATH
 
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
