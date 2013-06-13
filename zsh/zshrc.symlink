@@ -18,8 +18,8 @@ setopt SHARE_HISTORY
 POWERLINE_HIDE_HOST_NAME="true"
 POWERLINE_HIDE_USER_NAME="true"
 POWERLINE_RIGHT_A="date"
-# POWERLINE_DISABLE_RPROMPT="true"
 POWERLINE_NO_BLANK_LINE="true"
+# POWERLINE_DISABLE_RPROMPT="true"
 # POWERLINE_FULL_CURRENT_PATH="true"
 
 #search backwards and forwards with a pattern
@@ -36,19 +36,21 @@ bindkey "^H" backward-delete-char
 plugins=(brew npm osx git vi-mode)
 source $ZSH/oh-my-zsh.sh
 
+export DOTFILES=$HOME/.dotfiles
 # Customize to your needs...
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
 export PATH=~/bin:$PATH
 export PATH=/opt/local/bin:$PATH
 export PATH=/usr/local/Cellar/ruby/1.9.3-p327/bin:$PATH
 export PATH=/usr/local/Cellar:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$DOTFILES/bin:$PATH
 export TERM=screen-256color
 
 #tmux colors
 alias tmux="TERM=xterm-256color tmux"
 
 # Activate z
-# . z
+. z
 
 # ALIASES
 alias ls='ls -F'
