@@ -11,6 +11,7 @@ Bundle 'ctrlp.vim'
 Bundle 'fugitive.vim'
 Bundle 'gitignore'
 Bundle 'The-NERD-tree'
+Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'Lokaltog/vim-powerline'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"

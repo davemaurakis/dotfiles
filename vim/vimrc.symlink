@@ -178,6 +178,8 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 
 " quit NERDTree after opening a file
 let g:NERDTreeQuitOnOpen = 1
+" load nerd-tree-tabs plugin on startup
+let g:nerdtree_tabs_open_on_console_startup=1
 
 " CoffeeTags 
  let g:tagbar_type_coffee = {
