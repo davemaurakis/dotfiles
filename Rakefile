@@ -92,16 +92,17 @@ task :install => [
 
 end
 
-desc "Generate a local bash_profile"
-task :generate_bash_profile_from_template do
-  bash_profile_name = "#{ENV['HOME']}/.bash_profile"
+def generate_local_shell_config_file_from_template(options)
+  file = options[:file_name]
+  dir = options[:template_dir]
+  file_name = "#{ENV['HOME']}/.#{file}"
   exists = false
   skip = false
   regenerate = false
 
-  if File.exists?(bash_profile_name)
+  if File.exists?(file_name)
     exists = true
-    puts "\nA local .bash_profile file already exists"
+    puts "\nA local #{file} file already exists"
     puts "What do you want to do? [s]kip, [r]egenerate"
     case STDIN.gets.chomp
     when 's' then skip = true
@@ -111,41 +112,29 @@ task :generate_bash_profile_from_template do
 
   if not exists or regenerate
     repl = {}
-    puts "\nGenerating local bash_profile"
+    puts "\nGenerating local #{file}"
     print("Polar path: "); STDOUT.flush; repl['__POLAR_PATH__'] = STDIN.gets.chomp
     print("ADB path: "); STDOUT.flush; repl['__ADB_PATH__'] = STDIN.gets.chomp
-    temp = IO.read('bash/bash_profile.template')
+    temp = IO.read("#{dir}/#{file}.template")
     repl.each { |k,v| temp.gsub!(k,v) }
-    File.new(bash_profile_name, File::WRONLY|File::TRUNC|File::CREAT).puts temp
+    File.new(file_name, File::WRONLY|File::TRUNC|File::CREAT).puts temp
   end
+end
+
+desc "Generate a local bash_profile"
+task :generate_bash_profile_from_template do
+  generate_local_shell_config_file_from_template(
+    :template_dir => "bash",
+    :file_name => "bash_profile"
+  )
 end
 
 desc "Generate a local zshrc file"
 task :generate_zshrc_from_template do
-  zshrc_name = "#{ENV['HOME']}/.zshrc"
-  exists = false
-  skip = false
-  regenerate = false
-
-  if File.exists?(zshrc_name)
-    exists = true
-    puts "\nA local .zshrc file already exists"
-    puts "What do you want to do? [s]kip, [r]egenerate"
-    case STDIN.gets.chomp
-    when 's' then skip = true
-    when 'r' then regenerate = true
-    end
-  end
-
-  if not exists or regenerate
-    repl = {}
-    puts "\nGenerating local zshrc file"
-    print("Polar path: "); STDOUT.flush; repl['__POLAR_PATH__'] = STDIN.gets.chomp
-    print("ADB path: "); STDOUT.flush; repl['__ADB_PATH__'] = STDIN.gets.chomp
-    temp = IO.read('zsh/zshrc.template')
-    repl.each { |k,v| temp.gsub!(k,v) }
-    File.new(zshrc_name, File::WRONLY|File::TRUNC|File::CREAT).puts temp
-  end
+  generate_local_shell_config_file_from_template(
+    :template_dir => "zsh",
+    :file_name => "zshrc"
+  )
 end
 
 desc "Generate a gitconfig file from the template based on user input"
