@@ -30,7 +30,11 @@ require 'rake'
 require 'fileutils'
 
 desc "Hook our dotfiles into system-standard positions."
-task :install => [:generate_gitconfig_from_template, :generate_bash_profile_from_template] do
+task :install => [
+  :generate_gitconfig_from_template,
+  :generate_bash_profile_from_template,
+  :generate_zshrc_from_template
+] do
   linkables = Dir.glob('*/**{.symlink}').map! do |linkable|
     file = linkable.split('/').last.split('.symlink').last
     { "path" => linkable,
@@ -109,9 +113,38 @@ task :generate_bash_profile_from_template do
     repl = {}
     puts "\nGenerating local bash_profile"
     print("Polar path: "); STDOUT.flush; repl['__POLAR_PATH__'] = STDIN.gets.chomp
+    print("ADB path: "); STDOUT.flush; repl['__ADB_PATH__'] = STDIN.gets.chomp
     temp = IO.read('bash/bash_profile.template')
     repl.each { |k,v| temp.gsub!(k,v) }
     File.new(bash_profile_name, File::WRONLY|File::TRUNC|File::CREAT).puts temp
+  end
+end
+
+desc "Generate a local zshrc file"
+task :generate_zshrc_from_template do
+  zshrc_name = "#{ENV['HOME']}/.zshrc"
+  exists = false
+  skip = false
+  regenerate = false
+
+  if File.exists?(zshrc_name)
+    exists = true
+    puts "\nA local .zshrc file already exists"
+    puts "What do you want to do? [s]kip, [r]egenerate"
+    case STDIN.gets.chomp
+    when 's' then skip = true
+    when 'r' then regenerate = true
+    end
+  end
+
+  if not exists or regenerate
+    repl = {}
+    puts "\nGenerating local zshrc file"
+    print("Polar path: "); STDOUT.flush; repl['__POLAR_PATH__'] = STDIN.gets.chomp
+    print("ADB path: "); STDOUT.flush; repl['__ADB_PATH__'] = STDIN.gets.chomp
+    temp = IO.read('zsh/zshrc.template')
+    repl.each { |k,v| temp.gsub!(k,v) }
+    File.new(zshrc_name, File::WRONLY|File::TRUNC|File::CREAT).puts temp
   end
 end
 
