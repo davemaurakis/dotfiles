@@ -17,7 +17,7 @@ POWERLINE_GIT_CLEAN="%F{green}✔%F{black}"
 
 ### POWERLINE-SHELL ###
 function powerline_precmd() {
-  export PS1="$(~/.powerline-shell.py $? --shell zsh)"
+  export PS1="$(~/coding/git-repos/powerline-shell/powerline-shell.py $? --shell zsh)"
 }
 
 function install_powerline_precmd() {
