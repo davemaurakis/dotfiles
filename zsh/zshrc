@@ -12,8 +12,6 @@ POWERLINE_HIDE_USER_NAME="true"
 POWERLINE_RIGHT_A="date"
 POWERLINE_NO_BLANK_LINE="true"
 POWERLINE_DISABLE_RPROMPT="true"
-POWERLINE_GIT_CLEAN="%F{green}✔%F{black}"
-
 
 ### POWERLINE-SHELL ###
 function powerline_precmd() {
