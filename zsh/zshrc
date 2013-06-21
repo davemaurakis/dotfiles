@@ -36,8 +36,12 @@ bindkey -M vicmd '?' history-incremental-pattern-search-forward
 # set up for insert mode too
 bindkey -M viins '^R' history-incremental-pattern-search-backward
 bindkey -M viins '^F' history-incremental-pattern-search-forward
-bindkey "^?" backward-delete-char
+# fix deleting in insert mode
+bindkey -v
+bindkey "^W" backward-kill-word
 bindkey "^H" backward-delete-char
+bindkey "^U" kill-line
+bindkey "^?" backward-delete-char
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
