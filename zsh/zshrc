@@ -61,6 +61,8 @@ setopt SHARE_HISTORY
 # colors
 export TERM=screen-256color
 export TERM="xterm-256color"
+# make filetype colors like bash
+export LSCOLORS=exfxcxdxbxegedabagacad
 
 # tmux colors
 alias tmux="TERM=xterm-256color tmux"
@@ -93,9 +95,9 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 . z
 
 # ALIASES
-alias ls='ls -F'
-alias ll='ls -aG'
-alias la='ll -l'
+alias ls='ls -FG'
+alias ll='ls -a'
+alias la='ll -lh'
 alias mkdir='mkdir -pv'
 alias j='jobs -l'
 
