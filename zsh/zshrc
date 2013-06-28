@@ -81,47 +81,11 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 
-export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
-
-export PATH=$PATH:/usr/local/bin/git:$HOME/bin
-
-# POLAR
-export POLARPATH=$HOME/coding/polar/projects
-export PATH=$PATH:$POLARPATH/MediaEverywhere-CLI/bin
-
-# NPM globals
-export PATH=$PATH:/usr/local/share/npm/bin
-
-export PATH=$PATH:$ADBPATH
-# MacPorts
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# PATHS
+source $DOTFILES/system/paths
 
 # Activate z
 . z
 
 # ALIASES
-alias ls='ls -FG'
-alias ll='ls -a'
-alias la='ll -lh'
-alias mkdir='mkdir -pv'
-alias j='jobs -l'
-
-# npm
-alias npmrm='rm -rfv node_modules'
-alias npmclr='npm cache clear'
-alias npminst='npm install'
-
-# vim
-alias viminstall='vim +BundleInstall +qall'
-alias vimrestore='vim -S ~/.previous_session.ses'
-
-# work
-alias mebuild='me build --watch --debug --serve'
-alias melive='me build --watch --debug --serve --live'
-alias meclean='me clean'
-
-# misc
-alias type='gtypist -b -i'
-alias grep='grep --color=auto -C 3'
-alias wget='wget -c' # make wget resume downloads by defauls
-alias adbforward='adb forward tcp:9222 localabstract:chrome_devtools_remote'
+source $DOTFILES/system/aliases

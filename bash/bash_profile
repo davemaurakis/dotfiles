@@ -24,24 +24,10 @@ function _update_ps1()
   export PS1="$(~/.powerline-shell.py $?)"
 }
 
-# PATHS
 export PROMPT_COMMAND="_update_ps1"
 
-export PATH="/usr/local/bin:/usr/local/sbin:$DOTFILES/bin:$PATH"
-
-export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
-
-export PATH=$PATH:/usr/local/bin/git:$HOME/bin
-
-# POLAR
-export PATH=$PATH:$POLARPATH/MediaEverywhere-CLI/bin
-
-# NPM globals
-export PATH=$PATH:/usr/local/share/npm/bin
-
-export PATH=$PATH:$ADBPATH
-# MacPorts
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# PATHS
+source $DOTFILES/system/paths
 
 # Activate z
 . z
@@ -54,32 +40,4 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
 fi
 
 # ALIASES
-alias ls='ls -F'
-alias ll='ls -aG'
-alias la='ll -l'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias mkdir='mkdir -pv'
-alias j='jobs -l'
-
-# npm
-alias npmrm='rm -rfv node_modules'
-alias npmclr='npm cache clear'
-alias npminst='npm install'
-
-# vim
-alias viminstall='vim +BundleInstall +qall'
-alias vimrestore='vim -S ~/.previous_session.ses'
-
-# work
-alias mebuild='me build --watch --debug --serve'
-alias melive='me build --watch --debug --serve --live'
-alias meclean='me clean'
-
-# misc
-alias type='gtypist -b -i'
-alias grep='grep --color=auto -C 3'
-alias wget='wget -c' # make wget resume downloads by defauls
-alias adbforward='adb forward tcp:9222 localabstract:chrome_devtools_remote'
+source $DOTFILES/system/aliases
