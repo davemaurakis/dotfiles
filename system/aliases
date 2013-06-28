@@ -24,3 +24,5 @@ alias type='gtypist -b -i'
 alias grep='grep --color=auto -C 3'
 alias wget='wget -c' # make wget resume downloads by defauls
 alias adbforward='adb forward tcp:9222 localabstract:chrome_devtools_remote'
+
+export LESS='-R-i-P%f (%i/%m) Line %lt/%L'
