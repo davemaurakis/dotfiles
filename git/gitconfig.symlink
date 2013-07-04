@@ -16,7 +16,8 @@
   aa = add --all
   ff = merge --ff-only
   pullff = pull --ff-only
-  amend = amend
+  amend = amend # uses git-amend
+  squash = squash # uses git-squash
   mg = merge --no-ff
   undo = reset --hard
   us = reset HEAD

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]
+    then
+        echo 'You must specify a merge-base branch'
+    else
+        curr_branch=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||')
+        merge_base=$(git merge-base $curr_branch $1)
+        git rebase -i $merge_base
+fi
