@@ -5,6 +5,7 @@ export PATH=$PATH:/usr/local/bin/git:$HOME/bin
 # POLAR
 export POLARPATH=$HOME/coding/polar/projects
 export PATH=$PATH:$POLARPATH/MediaEverywhere-CLI/bin
+export PATH=$PATH:$POLARPATH/MediaEverywhere-iOS/bin
 
 # NPM globals
 export PATH=$PATH:/usr/local/share/npm/bin
