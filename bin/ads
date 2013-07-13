@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# Quickly change /etc/hosts to either allow or block ads
+
+ALLOW=$DOTFILES/system/hosts.allow
+BLOCK=$DOTFILES/system/hosts.block
+HOSTS=/etc/hosts
+
+case $1 in
+  "block" )
+    echo "Blocking Ads..."
+    cat "$BLOCK" > $HOSTS
+    dscacheutil -flushcache ;;
+  "allow" )
+    echo "Allowing Ads..."
+    cat "$ALLOW" > $HOSTS
+    dscacheutil -flushcache ;;
+  * )
+    # using lines of code in hostfile to determine which hostfile is active
+    LOC=$(echo $(wc -l /etc/hosts) | sed -E  's/(.*) (.*)/\1/')
+    if [ "$LOC" -lt 20 ]; then
+      echo "Ads: ALLOWED"
+    else
+      echo "Ads: BLOCKED"
+    fi
+esac

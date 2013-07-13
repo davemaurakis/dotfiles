@@ -20,6 +20,7 @@ alias melive='me build --watch --debug --serve --live'
 alias meclean='me clean'
 
 # misc
+alias cpu='top -o cpu'
 alias type='gtypist -b -i'
 alias grep='grep --color=auto -C 3'
 alias wget='wget -c' # make wget resume downloads by defauls
