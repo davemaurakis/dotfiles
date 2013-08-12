@@ -4,6 +4,7 @@ alias ll='ls -a'
 alias la='ll -lh'
 alias mkdir='mkdir -pv'
 alias j='jobs -l'
+alias vi='vim'
 
 # npm
 alias npmrm='rm -rfv node_modules'
