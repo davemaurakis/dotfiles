@@ -385,16 +385,5 @@ command! Rename :call RenameFile()<cr>
 " open .vimrc
 nmap <leader>v :tabnew ~/.vimrc <cr>
 
-let g:startify_custom_header = [
-\ '',
-\ '',
-\'       _                      _          ____       , __',
-\'      (_|    |               | |        (|   \     /|/  \           |',
-\'        |    |   _  _    __  | |  _      |    |     | __/ __,   __, |',
-\'        |    |  / |/ |  /    |/  |/     _|    |-----|   \/  |  /  | |',
-\'         \__/\_/  |  |_/\___/|__/|__/  (/\___/      |(__/\_/|_/\_/|/o',
-\'                                                                 /|',
-\'                                                                 \|',
-\ '',
-\ '',
-\]
+:exec ":source " . $HOME . '/.vim/ascii/uncle_d.vim'
+let g:startify_custom_header = uncle_d
