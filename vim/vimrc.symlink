@@ -385,5 +385,9 @@ command! Rename :call RenameFile()<cr>
 " open .vimrc
 nmap <leader>v :tabnew ~/.vimrc <cr>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" STARTIFY SETTINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :exec ":source " . $HOME . '/.vim/ascii/uncle_d.vim'
-let g:startify_custom_header = uncle_d
+let g:startify_custom_header = ascii
+let g:startify_change_to_dir = 0
