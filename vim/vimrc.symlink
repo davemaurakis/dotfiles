@@ -269,16 +269,12 @@ function ToggleJournal()
   else
     let cwd_journal_exists = filereadable("TODO.taskpaper")
     if cwd_journal_exists
-      echo 'open (c)urrent journal in ' . getcwd() . ' or (g)lobal journal: '
+      echo 'open (l)ocal journal (in ' . getcwd() . '/) or (g)lobal journal: '
     else
-      echo '(c)reate journal in ' . getcwd() . ' or open (g)lobal journal: '
+      echo 'create (l)ocal journal (in ' . getcwd() . '/) or open (g)lobal journal: '
     endif
-    let input = getchar()
-    " c = 99
-    " g = 103
-    let current = 99
-    let global = 103
-    if input == current
+    let input = nr2char(getchar())
+    if input == 'l'
       :split TODO.taskpaper
       let g:journal_open=1
       if !cwd_journal_exists
@@ -286,7 +282,7 @@ function ToggleJournal()
         :execute 'normal ' . 'oTODOs:'
         :w
       endif
-    elseif input == global
+    elseif input == 'g'
       :split ~/Dropbox/appdata/todo/TODO.taskpaper
       let g:journal_open=1
     endif
