@@ -205,7 +205,7 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 vmap <leader>c <esc>:'<,'>:CoffeeCompile<CR>
 map <leader>c :CoffeeCompile<CR>
 "js2coffee
-map <leader>js :! Js2Coffee<CR>
+map <leader>JS :! Js2Coffee<CR>
 
 function SaveSession()
   :echo 'saving session'
@@ -256,15 +256,40 @@ let g:syntastic_mode_map = { 'mode': 'active',
 
 map <leader>j :call ToggleJournal()<CR>
 " Toggle Taskpaper Journal
-let g:journal_toggle=0
+let g:journal_open=0
 
 function ToggleJournal()
-  if g:journal_toggle
+  if g:journal_open
+    :w
+    let buffernumber = str2nr(bufnr('TODO.taskpaper'))
+    if buffernumber != -1
       :bd TODO.taskpaper
-      let g:journal_toggle=0
+      let g:journal_open=0
+    endif
   else
+    let cwd_journal_exists = filereadable("TODO.taskpaper")
+    if cwd_journal_exists
+      echo 'open (c)urrent journal in ' . getcwd() . ' or (g)lobal journal: '
+    else
+      echo '(c)reate journal in ' . getcwd() . ' or open (g)lobal journal: '
+    endif
+    let input = getchar()
+    " c = 99
+    " g = 103
+    let current = 99
+    let global = 103
+    if input == current
+      :split TODO.taskpaper
+      let g:journal_open=1
+      if !cwd_journal_exists
+        :execute 'normal ' . 'R' . getcwd() . '/'
+        :execute 'normal ' . 'oTODOs:'
+        :w
+      endif
+    elseif input == global
       :split ~/Dropbox/appdata/todo/TODO.taskpaper
-      let g:journal_toggle=1
+      let g:journal_open=1
+    endif
   endif
 endfunction
 
