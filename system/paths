@@ -2,16 +2,8 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 export PATH=$PATH:/usr/local/bin/git:$HOME/bin
 
-# POLAR
-export PATH=$PATH:$POLARPATH/MediaEverywhere-CLI/bin
-export PATH=$PATH:$POLARPATH/MediaEverywhere-iOS/bin
-export PATH=$PATH:$POLARPATH/MediaEverywhere-Android/bin
-
 # NPM globals
 export PATH=$PATH:/usr/local/share/npm/bin
-
-# ADB
-export PATH=$PATH:$ADBPATH
 
 # MacPorts
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH

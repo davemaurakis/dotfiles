@@ -15,7 +15,7 @@ POWERLINE_DISABLE_RPROMPT="true"
 
 ### POWERLINE-SHELL ###
 function powerline_precmd() {
-  export PS1="$(~/coding/git-repos/powerline-shell/powerline-shell.py $? --shell zsh)"
+  export PS1="$($HOME/powerline-shell.py $? --shell zsh)"
 }
 
 function install_powerline_precmd() {

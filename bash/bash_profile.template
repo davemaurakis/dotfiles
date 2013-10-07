@@ -1,6 +1,4 @@
-# set up local paths
-export POLARPATH=__POLAR_PATH__
-export ADBPATH=__ADB_PATH__
-
 # load shared profile
 source ~/.dotfiles/bash/bash_profile
+
+# set up local paths

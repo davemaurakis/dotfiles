@@ -113,8 +113,6 @@ def generate_local_shell_config_file_from_template(options)
   if not exists or regenerate
     repl = {}
     puts "\nGenerating local #{file}"
-    print("Polar path: "); STDOUT.flush; repl['__POLAR_PATH__'] = STDIN.gets.chomp
-    print("ADB path: "); STDOUT.flush; repl['__ADB_PATH__'] = STDIN.gets.chomp
     temp = IO.read("#{dir}/#{file}.template")
     repl.each { |k,v| temp.gsub!(k,v) }
     File.new(file_name, File::WRONLY|File::TRUNC|File::CREAT).puts temp
