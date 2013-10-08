@@ -45,6 +45,11 @@ task :install => [
 
   # install oh-my-zsh
   `curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh`
+  puts "zsh installed"
+  `git submodule init`
+  `git submodule update`
+  `./zsh/oh-my-zsh-powerline-theme/install_in_omz.sh`
+  puts "zsh powerline theme installed"
 
   # Custom include for fish shell. The fish shell requires config
   # files to be in the location of ~/.config/fish/config.fish.
