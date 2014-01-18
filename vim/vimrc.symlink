@@ -415,3 +415,24 @@ nmap <leader>v :tabnew ~/.vimrc <cr>
 :exec ":source " . $HOME . '/.vim/ascii/uncle_d.vim'
 let g:startify_custom_header = ascii
 let g:startify_change_to_dir = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" AIRLINE SETTINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_theme             = 'powerlineish'
+let g:airline_enable_branch     = 1
+let g:airline_enable_syntastic  = 1
+
+" vim-powerline symbols
+let g:airline_left_sep          = '⮀'
+let g:airline_left_alt_sep      = '⮁'
+let g:airline_right_sep         = '⮂'
+let g:airline_right_alt_sep     = '⮃'
+let g:airline_branch_prefix     = '⭠'
+let g:airline_readonly_symbol   = '⭤'
+let g:airline_linecolumn_prefix = '⭡'
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#empty_message = ' '
+
+" removes the default mode indicator
+set noshowmode
