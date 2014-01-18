@@ -227,8 +227,8 @@ command SS :call SaveSession()
 command SQ :call SaveSession() | :wqall
 
 
-" autoclose
-nmap <unique> <Leader>ac <Plug>ToggleAutoCloseMappings
+" AUTOCLOSE
+nmap <unique> <Leader>AC <Plug>ToggleAutoCloseMappings
 " turn off autoclose by default
 let g:autoclose_on = 0
 
