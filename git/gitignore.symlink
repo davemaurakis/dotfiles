@@ -17,4 +17,5 @@ local/*
 *.todolist
 *.tasks
 *.taskpaper
+*.vimrc
 TODO

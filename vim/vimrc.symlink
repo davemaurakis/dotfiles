@@ -437,5 +437,5 @@ let g:airline_linecolumn_prefix = '⭡'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#empty_message = ' '
 
-" removes the default mode indicator
-set noshowmode
+set exrc            " enable per-directory .vimrc files
+set secure          " disable unsafe commands in local .vimrc files
