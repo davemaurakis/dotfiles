@@ -269,13 +269,13 @@ let g:journal_open=0
 function ToggleJournal()
   if g:journal_open
     :w
-    let buffernumber = str2nr(bufnr('TODO.taskpaper'))
+    let buffernumber = str2nr(bufnr('todo'))
     if buffernumber != -1
-      :bd TODO.taskpaper
+      :bd todo
       let g:journal_open=0
     endif
   else
-    let cwd_journal_exists = filereadable("TODO.taskpaper")
+    let cwd_journal_exists = filereadable("todo")
     if cwd_journal_exists
       echo 'open (l)ocal journal (in ' . getcwd() . '/) or (g)lobal journal: '
     else
@@ -283,7 +283,7 @@ function ToggleJournal()
     endif
     let input = nr2char(getchar())
     if input == 'l'
-      :split TODO.taskpaper
+      :split todo
       let g:journal_open=1
       if !cwd_journal_exists
         :execute 'normal ' . 'R' . getcwd() . '/'
@@ -291,7 +291,7 @@ function ToggleJournal()
         :w
       endif
     elseif input == 'g'
-      :split ~/Dropbox/appdata/todo/TODO.taskpaper
+      :split ~/Dropbox/appdata/todo/todo
       let g:journal_open=1
     endif
   endif
