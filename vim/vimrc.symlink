@@ -442,3 +442,8 @@ let g:airline#extensions#branch#empty_message = ' '
 set noshowmode      " remove the default mode indicator
 set exrc            " enable per-directory .vimrc files
 set secure          " disable unsafe commands in local .vimrc files
+
+nmap <leader><tab> :Tabularize /:<CR>
+vmap <leader><tab> :Tabularize /:<CR>
+nmap <leader><S-Tab> :Tabularize /:\zs<CR>
+vmap <leader><S-Tab> :Tabularize /:\zs<CR>
