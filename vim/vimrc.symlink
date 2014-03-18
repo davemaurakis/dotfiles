@@ -170,7 +170,7 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 " equalize window split
-" nnoremap <c-]> <c-w>=
+nnoremap <c-]> <c-w>=
 nnoremap <c-\> <c-w><bar>
 
 " resize windows quickly using arrow keys
