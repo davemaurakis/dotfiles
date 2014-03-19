@@ -10,3 +10,7 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # SML
 export PATH=$PATH:/usr/local/smlnj/bin
+
+# GO
+export GOPATH=$HOME/coding/go
+export PATH=$PATH:$GOPATH/bin
