@@ -14,3 +14,5 @@ export PATH=$PATH:/usr/local/smlnj/bin
 # GO
 export GOPATH=$HOME/coding/go
 export PATH=$PATH:$GOPATH/bin
+
+export CHROME_BIN="/Applications/Browsers/Google Chrome.app/Contents/MacOS/Google Chrome"

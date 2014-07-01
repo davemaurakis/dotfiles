@@ -14,6 +14,9 @@
 # Ignore node_modules directories which acking
 --ignore-dir=node_modules
 --ignore-dir=bower_components
+
+# Ignore public/vendor directories which acking
+--ignore-dir=public/vendor
 --ignore-dir=vendor
 
 # Ignore build directories which acking
