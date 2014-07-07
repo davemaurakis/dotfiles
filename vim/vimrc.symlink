@@ -25,6 +25,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightcyan ctermbg=10
 colorscheme solarized
 set ruler                       " show the cursor position all the time
 set number                      " show line numbers
+set relativenumber              " show relative line numbers (creates 'hybrid' mode with set number)
 set cursorline                  " draw a line on the same as the cursor position
 set mouse=a                     " enable mouse support
 set showcmd                     " display incomplete commands
