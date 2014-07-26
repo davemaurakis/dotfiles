@@ -4,28 +4,19 @@ alias ll='ls -a'
 alias la='ll -lh'
 alias mkdir='mkdir -pv'
 alias j='jobs -l'
-alias vi='vim'
-
-# npm
-alias npmrm='rm -rfv node_modules'
-alias npmclr='npm cache clear'
-alias npminst='npm install'
+alias rm='rm -v'
+alias tree='tree -a'
+alias cpu='top -o cpu'
+alias grep='grep --color=auto -C 3'
+alias wget='wget -c' # make wget resume downloads by defauls
 
 # vim
+alias vi='vim'
 alias viminstall='vim +BundleInstall +qall'
 alias vimrestore='vim -S ~/.previous_session.ses'
 
-# work
-alias mebuild='me build --watch --debug --serve'
-alias melive='me build --watch --debug --serve --live'
-alias meclean='me clean'
-
 # misc
-alias rm='rm -v'
-alias cpu='top -o cpu'
 alias type='gtypist -b -i'
-alias grep='grep --color=auto -C 3'
-alias wget='wget -c' # make wget resume downloads by defauls
 alias adbforward='adb forward tcp:9222 localabstract:chrome_devtools_remote'
 
 export LESS='-R-i-P%f (%i/%m) Line %lt/%L'
