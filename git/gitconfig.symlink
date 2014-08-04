@@ -63,6 +63,6 @@
   full-name = Dave Maurakis
   only-mine = true
 [mergetool]
-	keepBackup = false
+  keepBackup = false
 [push]
-	default = simple
+  default = simple
