@@ -48,3 +48,4 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'rizzatti/dash.vim'
 Bundle 'groenewege/vim-less'
 Bundle "mattn/emmet-vim"
+Bundle 'fatih/vim-go'
