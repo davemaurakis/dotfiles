@@ -466,7 +466,7 @@ nmap <leader><S-Tab> :Tabularize /\zs<Left><Left><Left>
 vmap <leader><S-Tab> :Tabularize /\zs<Left><Left><Left>
 
 " generate go tags on file save
-au BufWritePost *.go silent! !ctags -R &
+" au BufWritePost *.go silent! !ctags -R &
 
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',

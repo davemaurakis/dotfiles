@@ -7,11 +7,6 @@ for file in $DOTFILES/**/*.sh; do
 done
 unset file
 
-# rbenv stuff
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/bin:$PATH"
-
 # use .localrc for secrets that you do not want in your public, versioned repo
 if [[ -a ~/.localrc ]]
 then
