@@ -12,7 +12,7 @@ alias wget='wget -c' # make wget resume downloads by defauls
 
 # vim
 alias vi='vim'
-alias viminstall='vim +BundleInstall +qall'
+alias viminstall='vim +PluginInstall! +qall'
 alias vimrestore='vim -S ~/.previous_session.ses'
 
 # misc
