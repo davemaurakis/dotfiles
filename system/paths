@@ -5,13 +5,8 @@ export PATH=$PATH:/usr/local/bin/git:$HOME/bin
 # NPM globals
 export PATH=$PATH:/usr/local/share/npm/bin
 
-# MacPorts
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-
 # SML
 export PATH=$PATH:/usr/local/smlnj/bin
 
 # GO
 export PATH=$PATH:$GOPATH/bin
-
-export CHROME_BIN="/Applications/Browsers/Google Chrome.app/Contents/MacOS/Google Chrome"
