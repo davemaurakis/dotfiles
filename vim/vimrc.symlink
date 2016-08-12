@@ -125,10 +125,6 @@ set scrolloff=3
 "" Mappings
 let mapleader=";"
 
-" double percentage sign in command mode is expanded
-" to directory of current file - http://vimcasts.org/e/14
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-
 " Map space to / (search) and control-space to ? (backgwards search)
 " map <space> /
 " map ✧ ?
@@ -384,7 +380,7 @@ endfunction
 command! Rename :call RenameFile()<cr>
 
 " open .vimrc
-nmap <leader>v :tabnew ~/.vimrc <cr>
+nmap <leader>v :vs ~/.vimrc <cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STARTIFY SETTINGS
