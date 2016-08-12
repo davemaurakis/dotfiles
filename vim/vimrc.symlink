@@ -389,8 +389,17 @@ nmap <leader>v :tabnew ~/.vimrc <cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STARTIFY SETTINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:exec ":source " . $HOME . '/.vim/ascii/uncle_d.vim'
-let g:startify_custom_header = ascii
+let g:startify_custom_header_quotes = [[
+  \"Get your ASCII in gear.",
+  \"Add a custom signature in ~/.ascii.vim"
+\]]
+
+let ascii = $HOME . '/.ascii.vim'
+if filereadable(ascii)
+  :exec ":source " . ascii
+  let g:startify_custom_header = ascii
+endif
+
 let g:startify_change_to_dir = 0
 let g:startify_bookmarks = [ '~/.dotfiles/vim/vimrc.symlink' ]
 let g:startify_files_number = 10
