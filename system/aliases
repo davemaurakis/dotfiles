@@ -17,5 +17,6 @@ alias vimrestore='vim -S ~/.previous_session.ses'
 
 # misc
 alias adbforward='adb forward tcp:9222 localabstract:chrome_devtools_remote'
+alias crontab='VISUAL=vi crontab'
 
 export LESS='-R-i-P%f (%i/%m) Line %lt/%L'
