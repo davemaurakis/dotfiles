@@ -1,6 +1,6 @@
 [user]
-  name = davemaurakis
-  email = davemaurakis@gmail.com
+	name = davemaurakis
+	email = davemaurakis@gmail.com
 [alias]
   sta = status
   st = status -s
@@ -29,6 +29,7 @@
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   wc = whatchanged --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   count = !git shortlog -sn
+	dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
 [color]
   branch = auto
   diff = auto
