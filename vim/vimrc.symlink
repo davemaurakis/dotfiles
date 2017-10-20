@@ -2,18 +2,13 @@ set nocompatible
 syntax enable
 set encoding=utf-8
 
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-
-" load all plugins
+" load plugins
+call plug#begin('~/.vim/plugged')
 source $HOME/.vim/packages.vim
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 call togglebg#map("<F5>")
 
-"shell
 set shell=/bin/bash
 
 " Some view/ux related stuff

@@ -51,6 +51,9 @@ task :install => [
   `./zsh/oh-my-zsh-powerline-theme/install_in_omz.sh`
   puts "zsh powerline theme installed"
 
+  # install vim-plug
+  `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+
   # Custom include for fish shell. The fish shell requires config
   # files to be in the location of ~/.config/fish/config.fish.
   FileUtils.mkdir_p "#{ENV['HOME']}/.config/fish"
