@@ -11,6 +11,30 @@ call togglebg#map("<F5>")
 
 set shell=/bin/bash
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDComment
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <c-_><c-_> <Plug>NERDCommenterToggle
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FZF (replaces Ctrl-P)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use Ag as default command)
+let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
+" Customize fzf colors to match color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'header':  ['fg', 'Comment'] }"
+
 " Some view/ux related stuff
 set background=dark
 let g:indent_guides_auto_colors = 1
@@ -96,13 +120,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.template set ft=html
   au BufNewFile,BufRead *.scss set ft=scss.css
 
-  " Treat JSON files like JavaScript
-  au BufNewFile,BufRead *.json set ft=javascript
-
-  " Freemarker
-  au BufNewFile,BufRead *.ftl set filetype=html
-  au BufNewFile,BufRead *.js.ftl set filetype=javascript
-  au BufNewFile,BufRead *.html.ftl set filetype=html
+  " au BufNewFile,BufRead,BufWritePost *.js,*.jsx let flow#enable = (match(join(readfile(expand("%"))), "@flow") != -1)
 
   " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
   au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
@@ -130,14 +148,26 @@ map <silent> <leader>/ :noh<cr>
 " disable EX mode
 map Q <Nop>
 
+vnoremap . :norm.<CR>
+
 " Quickfix open
 nnoremap <leader>qo :copen<CR>
 
 " Quickfix close
 nnoremap <leader>qc :ccl<CR>
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ACK
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" supress shell leakage
+set shellpipe=>
 
-" Ack
-nnoremap <leader>a :Ack 
+" Use Ag (silver searcher)
+let g:ackprg="ag --nogroup --nocolor --column"
+
+" Don't open first result
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
 
 " Ack for the last search.
 nnoremap <silent> <leader>qa/ :execute "Ack! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
@@ -152,7 +182,9 @@ noremap <Leader>P "0P
 " goto previous buffer, then delete previous buffer (close buffer, keep split)
 nmap <leader>d :b#<bar>bd#<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SPLITS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " make splitting more sane
 set splitbelow
 set splitright
@@ -175,30 +207,33 @@ nnoremap <Down> :resize -3<cr>
 
 " NERDTree
 nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>c :NERDTreeFind<CR>
 " quit NERDTree after opening a file
-let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeQuitOnOpen = 0
 
 nnoremap <leader>l :TagbarToggle<CR>
-nnoremap <leader>t :CtrlPTag<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
-
-function SaveSession()
-  :echo 'saving session'
-  :mksession! ~/.previous_session.ses
-endfunction
+nnoremap <leader>t :Tags<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>F :Files!<CR>
 
 command W :w
 command Vs :vs
 command Wq :wq
-command SS :call SaveSession()
-command SQ :call SaveSession() | :wqall
 
-
-" AUTOCLOSE
-nmap <unique> <Leader>AC <Plug>ToggleAutoCloseMappings
-" turn off autoclose by default
-let g:autoclose_on = 0
-
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+"
 " CtrlP
 let g:ctrlp_extensions = ['tag']
 let g:ctrlp_match_window_bottom = 1
@@ -208,25 +243,34 @@ let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_working_path_mode = 'rw'
-let g:ctrlp_custom_ignore = 'build'
+let g:ctrlp_custom_ignore = 'build\|git'
 let g:ctrlp_regexp = 1
+let g:ctrlp_show_hidden = 1
 
-" Supertab
-let g:SuperTabDefaultCompletionType = "context"
 map ✠ o<Esc>
 map ✦ O<Esc>j
 map <leader>w :FixWhitespace<CR>
 set cmdheight=1
 let g:Powerline_symbols = 'fancy'
 
-" Syntastic
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SYNTASTIC
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_auto_loc_list=1
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': ['scss', 'mustache', 'html'] }
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" JOURNAL
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>j :call ToggleJournal()<CR>
 " Toggle Taskpaper Journal
 let g:journal_open=0
@@ -272,10 +316,7 @@ map ,hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
       \ " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
 " Override incremental search color
-" hi! link Search Pl7587d7ff1f0087afN
 hi! link Search DiffAdd
-" hi! link Search Folded
-" hi! link Search TabLineFill
 
 " Create non-existent parent directories on filesave
 function s:MkNonExDir(file, buf)
@@ -291,73 +332,14 @@ augroup BWCCreateDir
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
-" MULTICURSOR
-nnoremap <leader>dmc :<c-u>call MultiCursorSearch('<c-r><c-w>')<cr>
-nnoremap <leader>dc :<c-u>call MultiCursorPlaceCursor()<cr>
-nnoremap <leader>uc :<c-u>call MultiCursorManual()<cr>
-nnoremap <leader>rc :<c-u>call MultiCursorRemoveCursors()<cr>
-let g:multicursor_quit = "Q"
-
 " mapping to open current md file with Marked
 nnoremap <leader>md :!open -a "Marked.app" "%:p"<CR>
 
-" insert single character
-nnoremap I :<C-U>call InsertChar#insert(v:count1)<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" RUNNING TESTS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>t :call RunTestFile()<cr>
-" map <leader>a :call RunTests('')<cr>
-" map <leader>T :call RunNearestTest()<cr>
-
-function! RunTestFile(...)
-    if a:0
-        let command_suffix = a:1
-    else
-        let command_suffix = ""
-    endif
-
-    " Run the tests for the previously-marked file.
-    let in_test_file = match(expand("%"), '\(.spec.js\)$') != -1
-    if in_test_file
-        call SetTestFile()
-    elseif !exists("t:grb_test_file")
-        return
-    end
-    call RunTests(t:grb_test_file . command_suffix)
-endfunction
-
-function! RunNearestTest()
-    let spec_line_number = line('.')
-    call RunTestFile(":" . spec_line_number . " -b")
-endfunction
-
-function! SetTestFile()
-    " Set the spec file that tests will be run for.
-    let t:grb_test_file=@%
-endfunction
-
-function! RunTests(filename)
-    " Write the file and run tests for the given filename
-    :w
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    if filereadable("bin/test")
-      exec ":!bin/test " . a:filename
-    else
-        exec ":!node_modules/.bin/mocha " . a:filename
-    end
-endfunction
-"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OPEN FILES IN DIRECTORY OF CURRENT FILE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
 map <leader>e :edit %%
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -465,3 +447,8 @@ let g:tagbar_type_go = {
 \ }
 
 let g:jsx_ext_required = 0
+
+" disable vim-flow checking
+let g:flow#enable = 0
+let flow#enable = 0
+let g:flow#omnifunc = 0
