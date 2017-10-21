@@ -1,4 +1,0 @@
-# load shared profile
-source ~/.dotfiles/bash/bash_profile
-
-# set up local paths

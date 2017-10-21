@@ -32,7 +32,6 @@ require 'fileutils'
 desc "Hook our dotfiles into system-standard positions."
 task :install => [
   :generate_gitconfig_from_template,
-  :generate_bash_profile_from_template,
   :generate_zshrc_from_template
 ] do
   linkables = Dir.glob('*/**{.symlink}').map! do |linkable|
@@ -136,14 +135,6 @@ def generate_local_shell_config_file_from_template(options)
     repl.each { |k,v| temp.gsub!(k,v) }
     File.new(file_name, File::WRONLY|File::TRUNC|File::CREAT).puts temp
   end
-end
-
-desc "Generate a local bash_profile"
-task :generate_bash_profile_from_template do
-  generate_local_shell_config_file_from_template(
-    :template_dir => "bash",
-    :file_name => "bash_profile"
-  )
 end
 
 desc "Generate a local zshrc file"
