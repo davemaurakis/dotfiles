@@ -46,10 +46,10 @@ task :install => [
   # install oh-my-zsh
   `curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh`
   puts "zsh installed"
-  `git submodule init`
-  `git submodule update`
-  `./zsh/oh-my-zsh-powerline-theme/install_in_omz.sh`
-  puts "zsh powerline theme installed"
+
+  # install powerline-zsh-theme
+  `curl -o "$HOME/.oh-my-zsh/themes/powerline.zsh-theme" https://raw.githubusercontent.com/davemaurakis/oh-my-zsh-powerline-theme/master/powerline.zsh-theme`
+   puts "zsh powerline theme installed"
 
   # install vim-plug
   `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
