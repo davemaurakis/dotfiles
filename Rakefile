@@ -32,8 +32,13 @@ require 'fileutils'
 desc "Hook our dotfiles into system-standard positions."
 task :install => [
   :generate_gitconfig_from_template,
-  :generate_zshrc_from_template
-] do
+  :generate_zshrc_from_template,
+  :link_dotfiles,
+  :install_zsh,
+  :install_vim_plugins
+]
+
+task :link_dotfiles do
   linkables = Dir.glob('*/**{.symlink}').map! do |linkable|
     file = linkable.split('/').last.split('.symlink').last
     { "path" => linkable,
@@ -41,27 +46,6 @@ task :install => [
       "target" => "#{ENV["HOME"]}/.#{file}"
     }
   end
-
-  # install oh-my-zsh
-  log "installing oh-my-zsh"
-  sh "curl -sL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh",
-    verbose: false
-
-  # install powerline-zsh-theme
-  log "installing powerline-zsh-theme"
-  sh "curl -so \
-      $HOME/.oh-my-zsh/themes/powerline.zsh-theme \
-      https://raw.githubusercontent.com/davemaurakis/oh-my-zsh-powerline-theme/master/powerline.zsh-theme",
-      verbose: false
-  puts "zsh powerline theme installed successfully"
-
-  # install vim-plug
-  log "installing vim-plug"
-  sh "curl -sfLo \
-      ~/.vim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
-      verbose: false
-  puts "vim-pluginstalled successfully"
 
   skip_all = false
   overwrite_all = false
@@ -74,7 +58,9 @@ task :install => [
     path = linkable['path']
     target = linkable['target']
 
-    if File.exists?(target) || File.symlink?(target)
+    next if File.symlink?(target)
+
+    if File.exists?(target)
       unless skip_all || overwrite_all || backup_all
         puts " "
         puts "File already exists: #{target}"
@@ -95,9 +81,35 @@ task :install => [
     puts "\nLinked: #{Dir.pwd()}/#{path} => #{target}"
     `ln -s "$PWD/#{path}" "#{target}"`
   end
+end
+
+task :install_zsh do
+  # install oh-my-zsh
+  log "installing oh-my-zsh"
+  sh "curl -sL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh",
+    verbose: false
+
+  # install powerline-zsh-theme
+  log "installing powerline-zsh-theme"
+  sh "curl -so \
+      $HOME/.oh-my-zsh/themes/powerline.zsh-theme \
+      https://raw.githubusercontent.com/davemaurakis/oh-my-zsh-powerline-theme/master/powerline.zsh-theme",
+      verbose: false
+  puts "zsh powerline theme installed successfully"
+
+  log "install complete. make sure to run `source ~/.zshrc`"
+end
+
+task :install_vim_plugins do
+  # install vim-plug
+  log "installing vim-plug"
+  sh "curl -sfLo \
+      ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
+      verbose: false
+  puts "vim-pluginstalled successfully"
 
   sh "vim +PlugInstall! +qall"
-  log "install complete. make sure to run `source ~/.zshrc`"
 end
 
 def log (message, length=80)
