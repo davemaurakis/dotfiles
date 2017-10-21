@@ -44,23 +44,25 @@ task :install => [
   end
 
   # install oh-my-zsh
-  `curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh`
-  puts "zsh installed"
+  log "installing oh-my-zsh"
+  sh "curl -sL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh",
+    verbose: false
 
   # install powerline-zsh-theme
-  `curl -o "$HOME/.oh-my-zsh/themes/powerline.zsh-theme" https://raw.githubusercontent.com/davemaurakis/oh-my-zsh-powerline-theme/master/powerline.zsh-theme`
-   puts "zsh powerline theme installed"
+  log "installing powerline-zsh-theme"
+  sh "curl -so \
+      $HOME/.oh-my-zsh/themes/powerline.zsh-theme \
+      https://raw.githubusercontent.com/davemaurakis/oh-my-zsh-powerline-theme/master/powerline.zsh-theme",
+      verbose: false
+  puts "zsh powerline theme installed successfully"
 
   # install vim-plug
-  `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
-
-  # Custom include for fish shell. The fish shell requires config
-  # files to be in the location of ~/.config/fish/config.fish.
-  FileUtils.mkdir_p "#{ENV['HOME']}/.config/fish"
-  linkables << { "path" => "fish/config.fish",
-    "file" => "config.fish",
-    "target" => "#{ENV['HOME']}/.config/fish/config.fish"
-  }
+  log "installing vim-plug"
+  sh "curl -sfLo \
+      ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
+      verbose: false
+  puts "vim-pluginstalled successfully"
 
   skip_all = false
   overwrite_all = false
@@ -71,7 +73,6 @@ task :install => [
     backup = false
 
     path = linkable['path']
-    file = linkable['file']
     target = linkable['target']
 
     if File.exists?(target) || File.symlink?(target)
@@ -96,8 +97,17 @@ task :install => [
     `ln -s "$PWD/#{path}" "#{target}"`
   end
 
-  `source "$HOME/.bash_profile"`
+  sh "source $HOME/.bash_profile", verbose: false
+end
 
+def log (message, length=80)
+  border = "-" * length
+  buffer = " " * ((length - message.length) / 2 - 1)
+  puts "\n"
+  puts "#{border}"
+  puts "|#{buffer}#{message}#{buffer}|"
+  puts "#{border}"
+  puts "\n"
 end
 
 def generate_local_shell_config_file_from_template(options)
