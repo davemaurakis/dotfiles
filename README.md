@@ -1,4 +1,4 @@
-brownbathrobes's dotfiles
+davemaurakis dotfiles
 ==================
 
 My system configuration. ([Inspiration](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/))
@@ -6,10 +6,9 @@ My system configuration. ([Inspiration](http://zachholman.com/2010/08/dotfiles-a
 installation
 ------------
 
-    git clone git://github.com/brownbathrobe/dotfiles.git ~/.dotfiles
+    git clone git@github.com:davemaurakis/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles
     rake install
-    vim +BundleInstall +qall
 
 notes
 -----
