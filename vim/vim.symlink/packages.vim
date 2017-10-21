@@ -43,7 +43,7 @@ Plug 'davidoc/taskpaper.vim'
 Plug 'zakj/vim-showmarks'
 Plug 'skwp/greplace.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py --gocode-completer --tern-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py --tern-completer' }
 Plug 'mhinz/vim-startify'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

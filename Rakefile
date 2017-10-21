@@ -97,7 +97,8 @@ task :install => [
     `ln -s "$PWD/#{path}" "#{target}"`
   end
 
-  sh "source $HOME/.bash_profile", verbose: false
+  sh "vim +PlugInstall! +qall"
+  log "install complete. make sure to run `source ~/.zshrc`"
 end
 
 def log (message, length=80)
