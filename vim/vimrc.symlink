@@ -23,8 +23,13 @@ let g:NERDDefaultAlign = 'left'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use Ag as default command)
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
+
+" insert mode fuzzy search
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
 " Customize fzf colors to match color scheme
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],

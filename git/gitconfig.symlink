@@ -1,6 +1,6 @@
 [user]
-	name = davemaurakis
-	email = davemaurakis@gmail.com
+  name = davemaurakis
+  email = davemaurakis@gmail.com
 [alias]
   sta = status
   st = status -s
