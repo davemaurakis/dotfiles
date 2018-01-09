@@ -103,7 +103,6 @@ _has() {
 }
 
 # FZF {{{1
-# FZF is the future. This stuff has to be after some of the Zsh stuff above. Not sure why.
 if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
   source /usr/local/opt/fzf/shell/key-bindings.zsh
   source /usr/local/opt/fzf/shell/completion.zsh

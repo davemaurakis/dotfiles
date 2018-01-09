@@ -14,7 +14,7 @@ set shell=/bin/bash
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDComment
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <c-_><c-_> <Plug>NERDCommenterToggle
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
@@ -124,8 +124,6 @@ if has("autocmd")
   au BufNewFile,BufRead *.jst set ft=html
   au BufNewFile,BufRead *.template set ft=html
   au BufNewFile,BufRead *.scss set ft=scss.css
-
-  " au BufNewFile,BufRead,BufWritePost *.js,*.jsx let flow#enable = (match(join(readfile(expand("%"))), "@flow") != -1)
 
   " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
   au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
@@ -258,19 +256,7 @@ map <leader>w :FixWhitespace<CR>
 set cmdheight=1
 let g:Powerline_symbols = 'fancy'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SYNTASTIC
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -421,40 +407,4 @@ vmap <leader><tab> :Tabularize /
 nmap <leader><S-Tab> :Tabularize /\zs<Left><Left><Left>
 vmap <leader><S-Tab> :Tabularize /\zs<Left><Left><Left>
 
-" generate go tags on file save
-" au BufWritePost *.go silent! !ctags -R &
-
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : ''
-\ }
-
 let g:jsx_ext_required = 0
-
-" disable vim-flow checking
-let g:flow#enable = 0
-let flow#enable = 0
-let g:flow#omnifunc = 0
