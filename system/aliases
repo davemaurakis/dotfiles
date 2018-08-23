@@ -9,6 +9,7 @@ alias tree='tree -a'
 alias cpu='top -o cpu'
 alias grep='grep --color=auto -C 3'
 alias wget='wget -c' # make wget resume downloads by defauls
+alias ctags="`brew --prefix`/bin/ctags"
 
 # vim
 alias vi='vim'
