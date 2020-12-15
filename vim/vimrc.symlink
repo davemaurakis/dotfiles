@@ -30,15 +30,24 @@ set rtp+=~/.fzf
 " insert mode fuzzy search
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
+" Customize fzf window size
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
+
 " Customize fzf colors to match color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'header':  ['fg', 'Comment'] }"
+let g:fzf_colors = {
+  \ 'fg':      ['fg', 'FzfFg'],
+  \ 'bg':      ['bg', 'FzfBg'],
+  \ 'hl':      ['fg', 'FzfHl'],
+  \ 'fg+':     ['fg', 'FzfFgCurrent'],
+  \ 'bg+':     ['bg', 'FzfBgCurrent'],
+  \ 'hl+':     ['fg', 'FzfHlCurrent'],
+  \ 'info':    ['fg', 'FzfInfo'],
+  \ 'border':  ['fg', 'FzfBorder'],
+  \ 'prompt':  ['fg', 'FzfPrompt'],
+  \ 'pointer': ['fg', 'FzfPointer'],
+  \ 'marker':  ['fg', 'FzfMarker'],
+  \ 'spinner': ['fg', 'FzfSpinner'],
+  \ 'header':  ['fg', 'FzfHeader'] }
 
 " Some view/ux related stuff
 set background=dark
@@ -197,8 +206,17 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 " equalize window split
-nnoremap <c-]> <c-w>=
-nnoremap <c-\> <c-w><bar>
+let g:is_full_screen=0
+function ToggleFullSplit()
+  if g:is_full_screen
+    :exe "normal \<c-w>="
+    let g:is_full_screen=0
+  else
+    :exe "normal \<c-w>\<bar>"
+    let g:is_full_screen=1
+  endif
+endfunction
+map <c-\> :call ToggleFullSplit()<CR>
 
 " resize windows quickly using arrow keys
 nnoremap <Right> :vertical resize +3<cr>
@@ -224,7 +242,7 @@ command W :w
 command Vs :vs
 command Wq :wq
 
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
@@ -290,6 +308,7 @@ function ToggleJournal()
         :execute 'normal ' . 'oTODOs:'
         :w
       endif
+      set ft=plaintasks
     elseif input == 'g'
       :split ~/Dropbox/appdata/todo/todo
       let g:journal_open=1
@@ -365,6 +384,18 @@ if filereadable(ascii)
   let g:startify_custom_header = ascii
 endif
 
+" vim-test
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
+if has('nvim')
+    let test#strategy = "neovim"
+endif
+
+
 let g:startify_change_to_dir = 0
 let g:startify_bookmarks = [ '~/.dotfiles/vim/vimrc.symlink' ]
 let g:startify_files_number = 10
@@ -408,3 +439,22 @@ nmap <leader><S-Tab> :Tabularize /\zs<Left><Left><Left>
 vmap <leader><S-Tab> :Tabularize /\zs<Left><Left><Left>
 
 let g:jsx_ext_required = 0
+
+autocmd FileType typescript setlocal completeopt+=menu,preview
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'typescript': ['tsserver', 'tslint'],
+\   'react': ['eslint']
+\}
+
+let g:ale_fixers = {
+\    'javascript': ['eslint'],
+\    'typescript': ['tslint']
+\}
+
+let g:ale_fix_on_save = 1
+
+" CoC
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)

@@ -5,6 +5,7 @@ Plug 'skwp/vim-colors-solarized'
 " Search
 Plug 'mileszs/ack.vim'
 Plug 'ggreer/the_silver_searcher'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -13,7 +14,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 " Language
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'amadeus/vim-jsx'
 Plug 'juvenn/mustache.vim'
 Plug 'digitaltoad/vim-jade'
 Plug 'kchmck/vim-coffee-script'
@@ -24,6 +25,7 @@ Plug 'jnwhiteh/vim-golang'
 Plug 'fatih/vim-go'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
+Plug 'reasonml-editor/vim-reason-plus'
 
 Plug 'vitaly/vim-gitignore'
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -56,3 +58,10 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'RRethy/vim-illuminate'
 Plug 'metakirby5/codi.vim'
 Plug 'w0rp/ale'
+Plug 'hashivim/vim-terraform'
+Plug 'vim-test/vim-test'
+
+" Elixir
+Plug 'elixir-editors/vim-elixir'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
