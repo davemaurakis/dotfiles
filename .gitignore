@@ -1,2 +1,3 @@
 .localrc
 vim/vim.symlink/plugged
+vim/vim.symlink/undo
