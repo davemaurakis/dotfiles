@@ -1,6 +1,6 @@
 [user]
   name = davemaurakis
-  email = davemaurakis@gmail.com
+  email = dave.maurakis@nordstrom.com
 [alias]
   sta = status
   st = status -s
@@ -37,8 +37,7 @@
   status = auto
   ui = auto
 [core]
-  # editor = subl -w
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore
 [merge]
   tool = diffmerge
@@ -52,6 +51,7 @@
   whitespace = strip
 [diff]
   tool = diffmerge
+  colorMoved = dimmed-zebra
 [mergetool "diffmerge"]
   cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
   trustExitCode = true
@@ -60,9 +60,6 @@
 [git-tmbundle]
   gitnub-path = nub
   gitx-path = /Applications/Gitx
-[pivotal]
-  full-name = Dave Maurakis
-  only-mine = true
 [mergetool]
   keepBackup = false
 [push]

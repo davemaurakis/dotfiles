@@ -21,6 +21,7 @@
 
 # Ignore build directories which acking
 --ignore-dir=build
+--ignore-dir=builds
 --ignore-dir=dist
 
 # Ack Type Settings

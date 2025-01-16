@@ -26,6 +26,8 @@ Plug 'fatih/vim-go'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 Plug 'reasonml-editor/vim-reason-plus'
+Plug 'google/vim-jsonnet'
+Plug 'kevinoid/vim-jsonc'
 
 Plug 'vitaly/vim-gitignore'
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -46,7 +48,7 @@ Plug 'davidoc/taskpaper.vim'
 Plug 'zakj/vim-showmarks'
 Plug 'skwp/greplace.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py --tern-completer' }
+" Plug 'Valloric/YouCompleteMe', { 'do' : '~/.vim/plugged/YouCompleteMe/install.py --tern-completer' }
 Plug 'mhinz/vim-startify'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -57,11 +59,14 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'RRethy/vim-illuminate'
 Plug 'metakirby5/codi.vim'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'hashivim/vim-terraform'
 Plug 'vim-test/vim-test'
+Plug 'fgsch/vim-varnish'
 
 " Elixir
 Plug 'elixir-editors/vim-elixir'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
+" Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
+
+Plug 'lambdalisue/suda.vim'

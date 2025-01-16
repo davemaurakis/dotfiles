@@ -45,7 +45,7 @@ bindkey "^?" backward-delete-char
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew npm osx git vi-mode zsh-syntax-highlighting)
+plugins=(brew npm macos git vi-mode zsh-syntax-highlighting) # osx deprecated in favor of macos
 source $ZSH/oh-my-zsh.sh
 
 setopt NO_AUTO_NAME_DIRS
