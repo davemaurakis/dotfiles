@@ -97,6 +97,18 @@ task :install_zsh do
       verbose: false
   puts "zsh powerline theme installed successfully"
 
+  # install zsh-syntax-highlighting plugin
+  log "installing zsh-syntax-highlighting"
+  plugin_dir = "#{ENV['HOME']}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+  unless Dir.exist?(plugin_dir)
+    sh "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+        #{plugin_dir}",
+        verbose: false
+    puts "zsh-syntax-highlighting installed successfully"
+  else
+    puts "zsh-syntax-highlighting already installed, skipping"
+  end
+
   log "install complete. make sure to run `source ~/.zshrc`"
 end
 
