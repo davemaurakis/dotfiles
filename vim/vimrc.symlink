@@ -32,8 +32,8 @@ let g:NERDDefaultAlign = 'left'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF (replaces Ctrl-P)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use Ag as default command)
-let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+" Use ripgrep as default command (respects .gitignore)
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow -g "!.git/*" 2> /dev/null'
 
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
