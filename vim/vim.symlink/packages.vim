@@ -1,6 +1,7 @@
 " Colors
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'skwp/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 
 " Search
 Plug 'mileszs/ack.vim'

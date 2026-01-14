@@ -8,6 +8,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+let g:python3_host_prog = '/usr/bin/python3'
+
 " load plugins
 call plug#begin('~/.vim/plugged')
 source $HOME/.vim/packages.vim
@@ -20,7 +22,11 @@ set shell=/bin/zsh
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDComment
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <c-_><c-_> <Plug>NERDCommenterToggle
+if has('nvim')
+    map <c--><c--> <Plug>NERDCommenterToggle
+else
+    map <c-_><c-_> <Plug>NERDCommenterToggle
+endif
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -61,7 +67,10 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=lightgreen   ctermbg=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightcyan ctermbg=10
-colorscheme solarized
+
+set background=dark
+autocmd vimenter * ++nested colorscheme solarized8
+
 set ruler                       " show the cursor position all the time
 set number                      " show line numbers
 set relativenumber              " show relative line numbers (creates 'hybrid' mode with set number)
