@@ -10,6 +10,17 @@ installation
     cd ~/.dotfiles
     rake install
 
+The installation process will:
+- Install Homebrew (if not already installed)
+- Install dependencies from the Brewfile (ripgrep, fzf, etc.)
+- Install oh-my-zsh and plugins
+- Install vim-plug and Vim plugins
+- Symlink dotfiles to your home directory
+
+To manually install/update Homebrew packages:
+
+    brew bundle install
+
 notes
 -----
 
