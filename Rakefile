@@ -34,6 +34,8 @@ task :install => [
   :generate_gitconfig_from_template,
   :generate_zshrc_from_template,
   :link_dotfiles,
+  :install_homebrew,
+  :install_dependencies,
   :install_zsh,
   :install_vim_plugins
 ]
@@ -81,6 +83,41 @@ task :link_dotfiles do
     puts "\nLinked: #{Dir.pwd()}/#{path} => #{target}"
     `ln -s "$PWD/#{path}" "#{target}"`
   end
+end
+
+task :install_homebrew do
+  # Check if Homebrew is installed
+  if system('which brew > /dev/null 2>&1')
+    puts "Homebrew already installed, skipping"
+  else
+    log "installing Homebrew"
+    puts "Homebrew is required for installing dependencies"
+    puts "Installing Homebrew..."
+    sh '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"',
+      verbose: false
+    puts "Homebrew installed successfully"
+  end
+end
+
+task :install_dependencies do
+  log "installing dependencies"
+
+  # Check if Homebrew is available
+  unless system('which brew > /dev/null 2>&1')
+    puts "Homebrew not found. Please install Homebrew first."
+    exit 1
+  end
+
+  # Install packages from Brewfile
+  if File.exist?('Brewfile')
+    puts "Installing packages from Brewfile..."
+    sh "brew bundle install", verbose: false
+    puts "Dependencies installed successfully"
+  else
+    puts "No Brewfile found, skipping dependency installation"
+  end
+
+  log "dependencies installed"
 end
 
 task :install_zsh do
