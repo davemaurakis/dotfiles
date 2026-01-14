@@ -64,9 +64,6 @@ export TERM="xterm-256color"
 # make filetype colors like bash
 export LSCOLORS=exfxcxdxbxegedabagacad
 
-# tmux colors
-alias tmux="TERM=xterm-256color tmux"
-
 export DOTFILES=$HOME/.dotfiles
 # Customize your paths
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
