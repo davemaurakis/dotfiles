@@ -119,7 +119,4 @@ if _has fzf; then
   '
 fi
 
-# set up autoloading and keybindings
-fpath=("${DOTFILES}/zsh/functions" "${fpath[@]}")
 source "${DOTFILES}/zsh/functions/common"
-source "${DOTFILES}/zsh/keybindings.zsh"
