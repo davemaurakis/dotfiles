@@ -15,8 +15,6 @@ call plug#begin('~/.vim/plugged')
 source $HOME/.vim/packages.vim
 call plug#end()
 
-call togglebg#map("<F5>")
-
 set shell=/bin/zsh
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -35,7 +33,6 @@ let g:NERDDefaultAlign = 'left'
 " Use ripgrep as default command (respects .gitignore)
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow -g "!.git/*" 2> /dev/null'
 
-set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
 
 " insert mode fuzzy search
@@ -78,7 +75,6 @@ set cursorline                  " draw a line on the same as the cursor position
 set mouse=a                     " enable mouse support
 set showcmd                     " display incomplete commands
 set title                       " set the screen title to the currently opened file
-set gcr=n:blinkon0              " stop blinking cursors
 set laststatus=2                " for powerline visiblity
 
 " Allow backgrounding buffers without writing them, and remember marks/undo
@@ -144,8 +140,6 @@ if has("autocmd")
   let g:vim_markdown_folding_disabled = 1
 
   au FileType conf set ft=sh
-  au BufRead,BufNewFile coffee setf coffee
-  au BufRead,BufNewFile Jakefile setf javascript
   au BufNewFile,BufRead *.jst set ft=html
   au BufNewFile,BufRead *.template set ft=html
   au BufNewFile,BufRead *.scss set ft=scss.css
@@ -182,22 +176,6 @@ nnoremap <leader>qo :copen<CR>
 " Quickfix close
 nnoremap <leader>qc :ccl<CR>
 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ACK
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" supress shell leakage
-set shellpipe=>
-
-" Use Ag (silver searcher)
-let g:ackprg="ag --nogroup --nocolor --column --path-to-ignore ~/.ignore"
-
-" Don't open first result
-cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
-
-" Ack for the last search.
-nnoremap <silent> <leader>qa/ :execute "Ack! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
-
 " toggle last buffer
 nnoremap <leader><leader> <c-^>
 
@@ -246,7 +224,6 @@ nnoremap <leader>c :NERDTreeFind<CR>
 " quit NERDTree after opening a file
 let g:NERDTreeQuitOnOpen = 0
 
-nnoremap <leader>l :TagbarToggle<CR>
 nnoremap <leader>t :Tags<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>f :Files<CR>
@@ -264,70 +241,10 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
-"
-" CtrlP
-let g:ctrlp_extensions = ['tag']
-let g:ctrlp_match_window_bottom = 1
-let g:ctrlp_match_window_reversed = 1
-let g:ctrlp_dotfiles = 0 "so ctrlp won't search dotfiles/dotdirs
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_map = '<leader>f'
-let g:ctrlp_working_path_mode = 'rw'
-let g:ctrlp_custom_ignore = 'build\|git'
-let g:ctrlp_regexp = 1
-let g:ctrlp_show_hidden = 1
-
 map ✠ o<Esc>
 map ✦ O<Esc>j
 map <leader>w :FixWhitespace<CR>
 set cmdheight=1
-let g:Powerline_symbols = 'fancy'
-
-set statusline+=%#warningmsg#
-set statusline+=%*
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" JOURNAL
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>j :call ToggleJournal()<CR>
-" Toggle Taskpaper Journal
-let g:journal_open=0
-
-function ToggleJournal()
-  if g:journal_open
-    :w
-    let buffernumber = str2nr(bufnr('todo'))
-    if buffernumber != -1
-      :bd todo
-      let g:journal_open=0
-    endif
-  else
-    let cwd_journal_exists = filereadable("todo")
-    if cwd_journal_exists
-      echo 'open (l)ocal journal (in ' . getcwd() . '/) or (g)lobal journal: '
-    else
-      echo 'create (l)ocal journal (in ' . getcwd() . '/) or open (g)lobal journal: '
-    endif
-    let input = nr2char(getchar())
-    if input == 'l'
-      :split todo
-      let g:journal_open=1
-      if !cwd_journal_exists
-        :execute 'normal ' . 'R' . getcwd() . '/'
-        :execute 'normal ' . 'oTODOs:'
-        :w
-      endif
-      set ft=plaintasks
-    elseif input == 'g'
-      :split ~/Dropbox/appdata/todo/todo
-      let g:journal_open=1
-    endif
-  endif
-endfunction
-
-" ShowMarks
-let g:showmarks_enable=0
 
 " Show currently matched syntax rule
 map ,hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
@@ -352,8 +269,6 @@ augroup BWCCreateDir
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
-" mapping to open current md file with Marked
-nnoremap <leader>md :!open -a "Marked.app" "%:p"<CR>
 nnoremap <leader>o :Obsession<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -448,22 +363,7 @@ vmap <leader><tab> :Tabularize /
 nmap <leader><S-Tab> :Tabularize /\zs<Left><Left><Left>
 vmap <leader><S-Tab> :Tabularize /\zs<Left><Left><Left>
 
-let g:jsx_ext_required = 0
-
 autocmd FileType typescript setlocal completeopt+=menu,preview
-
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'typescript': ['tsserver', 'tslint'],
-\   'react': ['eslint']
-\}
-
-let g:ale_fixers = {
-\    'javascript': ['eslint'],
-\    'typescript': ['tslint']
-\}
-
-" let g:ale_fix_on_save = 1
 
 " JSON formatting
 nnoremap <leader>jq :%!jq .<CR>
