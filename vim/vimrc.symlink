@@ -137,7 +137,7 @@ if has("autocmd")
   " Make sure all markdown files have the correct filetype set and setup wrapping
   au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
   let g:vim_markdown_emphasis_disabled = 1
-  let g:vim_markdown_folding_disabled = 1
+  set nofoldenable
 
   au FileType conf set ft=sh
   au BufNewFile,BufRead *.jst set ft=html
@@ -176,6 +176,22 @@ nnoremap <leader>qo :copen<CR>
 " Quickfix close
 nnoremap <leader>qc :ccl<CR>
 "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ACK
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" supress shell leakage
+set shellpipe=>
+
+" Use Ag (silver searcher)
+let g:ackprg="ag --nogroup --nocolor --column --path-to-ignore ~/.ignore"
+
+" Don't open first result
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
+
+" Ack for the last search.
+nnoremap <silent> <leader>qa/ :execute "Ack! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+
 " toggle last buffer
 nnoremap <leader><leader> <c-^>
 

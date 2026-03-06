@@ -2,6 +2,7 @@
 Plug 'lifepillar/vim-solarized8'
 
 " Search
+Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
