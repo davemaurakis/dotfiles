@@ -137,7 +137,7 @@ if has("autocmd")
   " Make sure all markdown files have the correct filetype set and setup wrapping
   au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
   let g:vim_markdown_emphasis_disabled = 1
-  set nofoldenable
+  set foldlevelstart=99
 
   au FileType conf set ft=sh
   au BufNewFile,BufRead *.jst set ft=html
@@ -311,20 +311,6 @@ command! Rename :call RenameFile()<cr>
 " open .vimrc
 nmap <leader>v :vs ~/.vimrc <cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" STARTIFY SETTINGS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:startify_custom_header_quotes = [[
-  \"Get your ASCII in gear.",
-  \"Add a custom signature in ~/.ascii.vim"
-\]]
-
-let ascii = $HOME . '/.ascii.vim'
-if filereadable(ascii)
-  :exec ":source " . ascii
-  let g:startify_custom_header = ascii
-endif
-
 " vim-test
 nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-f> :TestFile<CR>
@@ -336,21 +322,32 @@ if has('nvim')
     let test#strategy = "neovim"
 endif
 
-
-let g:startify_change_to_dir = 0
-let g:startify_bookmarks = [ '~/.dotfiles/vim/vimrc.symlink' ]
-let g:startify_files_number = 10
-let g:startify_enable_special = 0
-
-autocmd FileType startify setlocal nocursorline
-
-" colors
-hi StartifyBracket ctermfg=240
-hi StartifyFooter  ctermfg=111
-hi StartifyHeader  ctermfg=203
-hi StartifyNumber  ctermfg=215
-hi StartifyPath    ctermfg=245
-hi StartifySlash   ctermfg=240
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" DASHBOARD
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('nvim')
+lua << EOF
+local ok, dashboard = pcall(require, 'dashboard')
+if ok then
+dashboard.setup {
+  theme = 'hyper',
+  config = {
+    week_header = { enable = true },
+    shortcut = {
+      { desc = '󰈞 Files', group = 'Function', key = 'f', action = 'Files' },
+      { desc = '󰊄 Search', group = 'String', key = 's', action = 'Ack!' },
+      { desc = '󰋚 Recent', group = 'Number', key = 'r', action = 'History' },
+      { desc = '󰙅 Tree', group = 'Keyword', key = 'e', action = 'NERDTreeToggle' },
+      { desc = ' Config', group = 'Constant', key = 'c', action = 'edit ~/.dotfiles/vim/vimrc.symlink' },
+    },
+    project = { enable = true, limit = 5, action = 'Files ' },
+    mru = { enable = true, limit = 10 },
+    footer = {},
+  },
+}
+end
+EOF
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
