@@ -21,6 +21,19 @@ To manually install/update Homebrew packages:
 
     brew bundle install
 
+post-install
+------------
+
+**iTerm2 Catppuccin Mocha colors** (manual step):
+
+    curl -sLo /tmp/catppuccin-mocha.itermcolors \
+      "https://raw.githubusercontent.com/catppuccin/iterm/main/colors/catppuccin-mocha.itermcolors"
+    open /tmp/catppuccin-mocha.itermcolors
+
+Then go to iTerm2 → Settings → Profiles → Colors → Color Presets and select **catppuccin-mocha**.
+
+**iTerm2 font**: Set to **InconsolataNerdFont** (size 14) in iTerm2 → Settings → Profiles → Text.
+
 notes
 -----
 

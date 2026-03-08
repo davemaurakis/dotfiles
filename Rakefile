@@ -37,7 +37,8 @@ task :install => [
   :install_homebrew,
   :install_dependencies,
   :install_zsh,
-  :install_vim_plugins
+  :install_vim_plugins,
+  :post_install_notes
 ]
 
 task :link_dotfiles do
@@ -126,14 +127,6 @@ task :install_zsh do
   sh "curl -sL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh",
     verbose: false
 
-  # install powerline-zsh-theme
-  log "installing powerline-zsh-theme"
-  sh "curl -so \
-      $HOME/.oh-my-zsh/themes/powerline.zsh-theme \
-      https://raw.githubusercontent.com/davemaurakis/oh-my-zsh-powerline-theme/master/powerline.zsh-theme",
-      verbose: false
-  puts "zsh powerline theme installed successfully"
-
   # install zsh-syntax-highlighting plugin
   log "installing zsh-syntax-highlighting"
   plugin_dir = "#{ENV['HOME']}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
@@ -144,6 +137,18 @@ task :install_zsh do
     puts "zsh-syntax-highlighting installed successfully"
   else
     puts "zsh-syntax-highlighting already installed, skipping"
+  end
+
+  # install zsh-autosuggestions plugin
+  log "installing zsh-autosuggestions"
+  plugin_dir = "#{ENV['HOME']}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+  unless Dir.exist?(plugin_dir)
+    sh "git clone https://github.com/zsh-users/zsh-autosuggestions.git \
+        #{plugin_dir}",
+        verbose: false
+    puts "zsh-autosuggestions installed successfully"
+  else
+    puts "zsh-autosuggestions already installed, skipping"
   end
 
   log "install complete. make sure to run `source ~/.zshrc`"
@@ -159,6 +164,29 @@ task :install_vim_plugins do
   puts "vim-pluginstalled successfully"
 
   sh "vim +PlugInstall! +qall"
+end
+
+task :post_install_notes do
+  log "manual steps required"
+  puts <<~NOTES
+
+    1. Install iTerm2 Catppuccin Mocha colors:
+
+       curl -sLo /tmp/catppuccin-mocha.itermcolors \\
+         "https://raw.githubusercontent.com/catppuccin/iterm/main/colors/catppuccin-mocha.itermcolors"
+       open /tmp/catppuccin-mocha.itermcolors
+
+       Then: iTerm2 → Settings → Profiles → Colors → Color Presets → catppuccin-mocha
+
+    2. Set iTerm2 font to InconsolataNerdFont (size 14):
+
+       iTerm2 → Settings → Profiles → Text → Font
+
+    3. Source your shell config:
+
+       source ~/.zshrc
+
+  NOTES
 end
 
 def log (message, length=80)

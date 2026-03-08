@@ -24,6 +24,12 @@ brew "kubernetes-cli"           # Kubernetes CLI (kubectl)
 # brew "htop"                   # System monitor
 # brew "jq"                     # JSON processor
 
+# Shell prompt
+brew "powerlevel10k"            # Modern zsh prompt theme
+
+# Fonts
+cask "font-inconsolata-nerd-font"  # Nerd Font with powerline + devicons glyphs
+
 # GUI Applications (casks)
 # cask "iterm2"                 # Terminal emulator (you have iTerm config)
 # cask "visual-studio-code"     # Code editor
