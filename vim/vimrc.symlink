@@ -65,8 +65,9 @@ let g:indent_guides_guide_size = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=lightgreen   ctermbg=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightcyan ctermbg=10
 
+set termguicolors
 set background=dark
-autocmd vimenter * ++nested colorscheme solarized8
+autocmd vimenter * ++nested colorscheme catppuccin-mocha
 
 set ruler                       " show the cursor position all the time
 set number                      " show line numbers
@@ -287,6 +288,12 @@ augroup END
 
 nnoremap <leader>o :Obsession<CR>
 
+" auto-start Obsession tracking in git repos that don't have a session yet
+autocmd VimEnter * nested
+  \ if !argc() && !filereadable('Session.vim') && isdirectory('.git') |
+  \   execute 'Obsession' |
+  \ endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OPEN FILES IN DIRECTORY OF CURRENT FILE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -329,20 +336,54 @@ if has('nvim')
 lua << EOF
 local ok, dashboard = pcall(require, 'dashboard')
 if ok then
+local colors = { '#e06c75', '#98c379', '#e5c07b', '#61afef', '#c678dd', '#56b6c2' }
+math.randomseed(os.time())
+local header_color = colors[math.random(#colors)]
+local footer_color = header_color
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = function()
+    vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = header_color })
+    vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = footer_color })
+  end
+})
+vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = header_color })
+vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = footer_color })
+
 dashboard.setup {
   theme = 'hyper',
   config = {
     week_header = { enable = true },
-    shortcut = {
-      { desc = '󰈞 Files', group = 'Function', key = 'f', action = 'Files' },
-      { desc = '󰊄 Search', group = 'String', key = 's', action = 'Ack!' },
-      { desc = '󰋚 Recent', group = 'Number', key = 'r', action = 'History' },
-      { desc = '󰙅 Tree', group = 'Keyword', key = 'e', action = 'NERDTreeToggle' },
-      { desc = ' Config', group = 'Constant', key = 'c', action = 'edit ~/.dotfiles/vim/vimrc.symlink' },
-    },
+    shortcut = (function()
+      local s = {
+        { desc = '󰈞 Files', group = 'Function', key = 'f', action = 'Files' },
+        { desc = '󰊄 Search', group = 'String', key = 's', action = 'Ack!' },
+        { desc = '󰋚 Recent', group = 'Number', key = 'r', action = 'History' },
+        { desc = '󰙅 Tree', group = 'Keyword', key = 'e', action = 'NERDTreeToggle' },
+        { desc = ' Config', group = 'Constant', key = 'c', action = 'edit ~/.dotfiles/vim/vimrc.symlink' },
+      }
+      if vim.fn.filereadable('Session.vim') == 1 then
+        table.insert(s, { desc = '󰦛 Resume', group = 'Special', key = 'q', action = 'source Session.vim' })
+      end
+      return s
+    end)(),
     project = { enable = true, limit = 5, action = 'Files ' },
     mru = { enable = true, limit = 10 },
-    footer = {},
+    footer = (function()
+      local stats = vim.fn.len(vim.fn.globpath('~/.vim/plugged', '*', 0, 1))
+      local dudes = {
+        '─=≡Σ((( つ◕ل͜◕)つ',
+        'ᕙ(⇀‸↼‶)ᕗ',
+        '(╯°□°)╯︵ ┻━┻',
+      }
+      math.randomseed(os.time())
+      return {
+        '',
+        '⚡ neovim loaded ' .. stats .. ' plugins',
+        '󰉋 ' .. vim.fn.getcwd(),
+        '',
+        dudes[math.random(#dudes)],
+      }
+    end)(),
   },
 }
 end
@@ -354,17 +395,17 @@ endif
 " AIRLINE SETTINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_symbols                         = {}
-let g:airline_theme                           = 'powerlineish'
+let g:airline_theme                           = 'catppuccin'
 let g:airline#extensions#branch#enabled       = 1
 let g:airline#extensions#eclim#enabled        = 1
 " vim-powerline symbols
-let g:airline_left_sep                        = '⮀'
-let g:airline_left_alt_sep                    = '⮁'
-let g:airline_right_sep                       = '⮂'
-let g:airline_right_alt_sep                   = '⮃'
-let g:airline_symbols.branch                  = '⭠'
-let g:airline_symbols.readonly                = '⭤'
-let g:airline_symbols.linenr                  = '⭡'
+let g:airline_left_sep                        = "\uE0B0"
+let g:airline_left_alt_sep                    = "\uE0B1"
+let g:airline_right_sep                       = "\uE0B2"
+let g:airline_right_alt_sep                   = "\uE0B3"
+let g:airline_symbols.branch                  = "\uE0A0"
+let g:airline_symbols.readonly                = "\uE0A2"
+let g:airline_symbols.linenr                  = "\uE0A1"
 let g:airline#extensions#branch#empty_message = ' '
 
 set noshowmode      " remove the default mode indicator

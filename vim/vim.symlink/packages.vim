@@ -1,5 +1,7 @@
 " Colors
 Plug 'lifepillar/vim-solarized8'
+Plug 'folke/tokyonight.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " Search
 Plug 'mileszs/ack.vim'
