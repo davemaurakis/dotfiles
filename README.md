@@ -24,13 +24,19 @@ To manually install/update Homebrew packages:
 post-install
 ------------
 
-**iTerm2 Catppuccin Mocha colors** (manual step):
+**iTerm2 Kanagawa colors** (default, matches kanagawa-wave vim colorscheme):
+
+    curl -sLo /tmp/kanagawa.itermcolors \
+      "https://raw.githubusercontent.com/rebelot/kanagawa.nvim/refs/heads/master/extras/iterm/kanagawa.itermcolors"
+    open /tmp/kanagawa.itermcolors
+
+**iTerm2 Catppuccin Mocha colors** (alternative, matches catppuccin-mocha vim colorscheme):
 
     curl -sLo /tmp/catppuccin-mocha.itermcolors \
       "https://raw.githubusercontent.com/catppuccin/iterm/main/colors/catppuccin-mocha.itermcolors"
     open /tmp/catppuccin-mocha.itermcolors
 
-Then go to iTerm2 → Settings → Profiles → Colors → Color Presets and select **catppuccin-mocha**.
+Then go to iTerm2 → Settings → Profiles → Colors → Color Presets and select the imported theme.
 
 **iTerm2 font**: Set to **InconsolataNerdFont** (size 14) in iTerm2 → Settings → Profiles → Text.
 

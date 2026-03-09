@@ -170,13 +170,18 @@ task :post_install_notes do
   log "manual steps required"
   puts <<~NOTES
 
-    1. Install iTerm2 Catppuccin Mocha colors:
+    1. Install iTerm2 Kanagawa colors (matches default vim colorscheme):
 
+       curl -sLo /tmp/kanagawa.itermcolors \\
+         "https://raw.githubusercontent.com/rebelot/kanagawa.nvim/refs/heads/master/extras/iterm/kanagawa.itermcolors"
+       open /tmp/kanagawa.itermcolors
+
+       Then: iTerm2 → Settings → Profiles → Colors → Color Presets → kanagawa
+
+       (Alternative: Catppuccin Mocha)
        curl -sLo /tmp/catppuccin-mocha.itermcolors \\
          "https://raw.githubusercontent.com/catppuccin/iterm/main/colors/catppuccin-mocha.itermcolors"
        open /tmp/catppuccin-mocha.itermcolors
-
-       Then: iTerm2 → Settings → Profiles → Colors → Color Presets → catppuccin-mocha
 
     2. Set iTerm2 font to InconsolataNerdFont (size 14):
 

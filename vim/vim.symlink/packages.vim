@@ -2,6 +2,7 @@
 Plug 'lifepillar/vim-solarized8'
 Plug 'folke/tokyonight.nvim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'rebelot/kanagawa.nvim'
 
 " Search
 Plug 'mileszs/ack.vim'
